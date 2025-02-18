@@ -1,0 +1,638 @@
+[
+  {
+    "type": "client_init",
+    "stream_llm_output": true,
+    "version": "v1",
+    "headers": {
+      "authorization": "Bearer eyJhbGciOiJFZERTQSIsImtpZCI6IjlkX2JMaEVGbWpSelMwanpxajlOSk15Vmt4TUpDZGpJeVkweFZxMFpWNlEiLCJ0eXAiOiJKV1QifQ.eyJhdWQiOiJwcm9tcHRxbC5oYXN1cmEuaW8iLCJleHAiOjE3Mzk5MDg2NzAsImh0dHBzOi8vcHJvbXB0cWwuaGFzdXJhLmlvIjp7InVzZXItYWNjZXNzZXMiOlt7ImFjY2Vzc19sZXZlbCI6ImFkbWluIiwicHJvamVjdCI6eyJpZCI6IjIwMjcxYmNmLTEwMWUtNGYyNy05MTI0LTMyNDk0ZWY0MTk1NSJ9fSx7ImFjY2Vzc19sZXZlbCI6ImFkbWluIiwicHJvamVjdCI6eyJpZCI6IjZjZjM3MDYyLTE2N2MtNDYyOS1hZTI0LTQwOTE2YWEzMzJlZiJ9fSx7ImFjY2Vzc19sZXZlbCI6ImFkbWluIiwicHJvamVjdCI6eyJpZCI6IjY5NWRlZDk2LTliY2EtNDNmYS05OGM5LTc2MWJjNmRmMzE4YSJ9fSx7ImFjY2Vzc19sZXZlbCI6ImFkbWluIiwicHJvamVjdCI6eyJpZCI6ImQ4YzNmMDdkLTNmMjEtNGM4NS04MDZlLTg5MDZkYWEwMzk1OCJ9fSx7ImFjY2Vzc19sZXZlbCI6ImFkbWluIiwicHJvamVjdCI6eyJpZCI6IjlhNmMzZjBkLTY4NzktNDU5OS04NGY4LTczNzkzMDVjOTE2ZSJ9fSx7ImFjY2Vzc19sZXZlbCI6ImFkbWluIiwicHJvamVjdCI6eyJpZCI6ImY5NmUxOWE0LTc5NzMtNGI1YS05ZjRkLTM4NzhjOTRlMmI4NiJ9fSx7ImFjY2Vzc19sZXZlbCI6ImFkbWluIiwicHJvamVjdCI6eyJpZCI6ImQ2MjBhYjdhLTJjMmItNDU3Mi05ZGJjLTEyY2JhOWExNWQwYiJ9fSx7ImFjY2Vzc19sZXZlbCI6ImFkbWluIiwicHJvamVjdCI6eyJpZCI6ImRlZGJiNjczLWI4ZmUtNDRmYy1hMWU5LTFlOTcyZWRmMmEwYiJ9fSx7ImFjY2Vzc19sZXZlbCI6ImFkbWluIiwicHJvamVjdCI6eyJpZCI6IjdlZTcwNGY4LTk2YWItNDkzZS1iNWQ5LTVkZDkxMTc1ZTNlZiJ9fSx7ImFjY2Vzc19sZXZlbCI6ImFkbWluIiwicHJvamVjdCI6eyJpZCI6IjU4MzE5YjFjLWViNzEtNGI3Mi05NmMwLTU0MWZkMDk0Nzk4MyJ9fSx7ImFjY2Vzc19sZXZlbCI6ImFkbWluIiwicHJvamVjdCI6eyJpZCI6ImUxYzRkMjA3LWJiNDItNDk4NS1hYmRlLTNhZGM5NjIxYzczYiJ9fSx7ImFjY2Vzc19sZXZlbCI6ImFkbWluIiwicHJvamVjdCI6eyJpZCI6IjQzYWYzZTgwLTk5ZjktNDFhNS05NWI0LWFkMTEyNTA0NTkyZiJ9fSx7ImFjY2Vzc19sZXZlbCI6ImFkbWluIiwicHJvamVjdCI6eyJpZCI6IjdiZTQ0OTI1LWQ2MzQtNGRjNS1hZjg3LTg5ZTAyNzdkOTg0ZCJ9fSx7ImFjY2Vzc19sZXZlbCI6ImFkbWluIiwicHJvamVjdCI6eyJpZCI6IjY1ZjE0YTQ4LWYwOTUtNDc0MC1hZTJmLTRiZDRjMzVmYzdmOCJ9fSx7ImFjY2Vzc19sZXZlbCI6ImFkbWluIiwicHJvamVjdCI6eyJpZCI6IjA5OTg1NmEwLTE3NmItNGE3Mi1iNGQwLWIxMjk3ZjIxN2JiMiJ9fSx7ImFjY2Vzc19sZXZlbCI6ImFkbWluIiwicHJvamVjdCI6eyJpZCI6IjM2OGQ3NTU0LWVmZTgtNGE5YS05ZTcxLWI2NWEwMjc2NDhkOSJ9fSx7ImFjY2Vzc19sZXZlbCI6ImFkbWluIiwicHJvamVjdCI6eyJpZCI6IjhhOTQ1MTIzLTRlZDAtNGQ3OS1iMjgyLTFiZThhMTA5YTc0NCJ9fSx7ImFjY2Vzc19sZXZlbCI6ImFkbWluIiwicHJvamVjdCI6eyJpZCI6IjJmNmY2NjA3LWVjMDYtNDA0NC1iZDE2LTljNzgyZjRhYmI1MCJ9fSx7ImFjY2Vzc19sZXZlbCI6ImFkbWluIiwicHJvamVjdCI6eyJpZCI6IjBlM2YyN2E1LWZhOTktNDFhZS05ZDlhLWRlZmRkNDIzNDVlMSJ9fSx7ImFjY2Vzc19sZXZlbCI6ImFkbWluIiwicHJvamVjdCI6eyJpZCI6IjJjZDNmY2I3LWIzYzgtNGY4MC04MjYyLWY4YWI3MDU4NTFmZiJ9fSx7ImFjY2Vzc19sZXZlbCI6ImFkbWluIiwicHJvamVjdCI6eyJpZCI6ImFiZDE2YWU2LTQxZTYtNGVlMC1hZjZmLTkxMGIzOWQ5N2UzMyJ9fSx7ImFjY2Vzc19sZXZlbCI6ImFkbWluIiwicHJvamVjdCI6eyJpZCI6IjhmNzM2ZDQ1LWIxOGMtNGViMi04ZDkxLTdiZDQ5NjUxMDlmMiJ9fSx7ImFjY2Vzc19sZXZlbCI6ImFkbWluIiwicHJvamVjdCI6eyJpZCI6IjM4NDZkZWI0LTkyMWQtNDc1MS1hNzFjLWU1NmI3YzEyZjU2MSJ9fSx7ImFjY2Vzc19sZXZlbCI6ImFkbWluIiwicHJvamVjdCI6eyJpZCI6IjY4NTQ4ZmM0LTkwNDAtNDI4My1hNTIxLTFlNjk5OTZjNjBkNiJ9fSx7ImFjY2Vzc19sZXZlbCI6ImFkbWluIiwicHJvamVjdCI6eyJpZCI6ImJlNGZiMmJiLTk0NmYtNDY2My1iZTRlLTdlNzhhMDgwMjM5NiJ9fSx7ImFjY2Vzc19sZXZlbCI6ImFkbWluIiwicHJvamVjdCI6eyJpZCI6Ijk0MzFjN2ZiLWEyMWUtNDdmOS1iYzY3LTQ5N2YyZmYxMGJiZiJ9fSx7ImFjY2Vzc19sZXZlbCI6InJlYWRfbWV0YWRhdGEiLCJwcm9qZWN0Ijp7ImlkIjoiYTQ1Y2QwZmQtYTJiYy00OWNlLWI0ZTctYzBiZmVhNTFkMjg1In19LHsiYWNjZXNzX2xldmVsIjoiYWRtaW4iLCJwcm9qZWN0Ijp7ImlkIjoiMmJmMTMzOTItN2YyMy00NGJhLTgxYWYtOWY1M2FiYzgxOWNjIn19LHsiYWNjZXNzX2xldmVsIjoiYWRtaW4iLCJwcm9qZWN0Ijp7ImlkIjoiYzI5NTVlNmYtMDE4Zi00YTQzLWJmZTctMzY1YzM1YTcyZDk2In19LHsiYWNjZXNzX2xldmVsIjoiYWRtaW4iLCJwcm9qZWN0Ijp7ImlkIjoiMGFiNGRkZDYtNTM0OS00YzhmLWJkNTEtZjM2ZDJkYzVmM2QzIn19LHsiYWNjZXNzX2xldmVsIjoiYWRtaW4iLCJwcm9qZWN0Ijp7ImlkIjoiNGI1NDNmNzUtM2EwZi00ZDUyLTgyYzItZmI1N2VmZWMxZGZkIn19LHsiYWNjZXNzX2xldmVsIjoiYWRtaW4iLCJwcm9qZWN0Ijp7ImlkIjoiNjA4ZDQxNDctMzE1NS00MDRjLTkwNjgtYzU1NWVjYmE5N2NkIn19LHsiYWNjZXNzX2xldmVsIjoicmVhZF9tZXRhZGF0YSIsInByb2plY3QiOnsiaWQiOiIxNzk0OTIxMy1jMGZhLTRmYjUtYjQ4Ny05NTE3YzA3OTIxODMifX0seyJhY2Nlc3NfbGV2ZWwiOiJhZG1pbiIsInByb2plY3QiOnsiaWQiOiI1M2UyMmJhMy0zNTcwLTRhZWMtODRjMi1jNDFmNjQ4NGI1MWUifX0seyJhY2Nlc3NfbGV2ZWwiOiJhZG1pbiIsInByb2plY3QiOnsiaWQiOiIxYTAzZTRlMC1kZDE0LTRmNDEtOTQxOC1iY2YyMTJhNTAyNDQifX0seyJhY2Nlc3NfbGV2ZWwiOiJyZWFkX21ldGFkYXRhIiwicHJvamVjdCI6eyJpZCI6IjViMTE3ZmRlLTlhZDQtNGYzNS1hYTUyLWQ0M2UwYjQyYzUwNiJ9fSx7ImFjY2Vzc19sZXZlbCI6ImFkbWluIiwicHJvamVjdCI6eyJpZCI6IjYyOTc1M2VlLTIxMTctNDZiMi1iMWIxLTk5MmEwYWE0OWMzMiJ9fSx7ImFjY2Vzc19sZXZlbCI6ImFkbWluIiwicHJvamVjdCI6eyJpZCI6ImVkMzFkNDEzLWEyZTAtNDE4OS1iZTIxLTE0OTQ2YjU4ZWFhZiJ9fSx7ImFjY2Vzc19sZXZlbCI6ImFkbWluIiwicHJvamVjdCI6eyJpZCI6ImQzYTBmYmE4LTFlMTgtNGMwMS04MDU1LWRlNzk0MWVmMzRmYSJ9fSx7ImFjY2Vzc19sZXZlbCI6ImFkbWluIiwicHJvamVjdCI6eyJpZCI6IjA3YWZiZWUyLWJiYTAtNGJhMi04ZjE0LTk2MmJiMDgyN2ZjYiJ9fSx7ImFjY2Vzc19sZXZlbCI6ImFkbWluIiwicHJvamVjdCI6eyJpZCI6ImQxZmVmNWMwLWUxZWMtNDQwYi04YmZhLTc2NjVhYTg3MTQxMiJ9fSx7ImFjY2Vzc19sZXZlbCI6ImFkbWluIiwicHJvamVjdCI6eyJpZCI6ImI0ZmM5ZTAyLWNiM2UtNGRmMy1hNTM2LWNhZmE2YmZiYTM4NiJ9fSx7ImFjY2Vzc19sZXZlbCI6InJlYWRfbWV0YWRhdGEiLCJwcm9qZWN0Ijp7ImlkIjoiYjRmYzllMDItY2IzZS00ZGYzLWE1MzYtY2FmYTZiZmJhMzg2In19LHsiYWNjZXNzX2xldmVsIjoiYWRtaW4iLCJwcm9qZWN0Ijp7ImlkIjoiNDNiOGY2NjYtZjI4OC00MzQ1LWFlNjUtMGJmMjhiZmJkZDJiIn19LHsiYWNjZXNzX2xldmVsIjoicmVhZF9tZXRhZGF0YSIsInByb2plY3QiOnsiaWQiOiI0M2I4ZjY2Ni1mMjg4LTQzNDUtYWU2NS0wYmYyOGJmYmRkMmIifX0seyJhY2Nlc3NfbGV2ZWwiOiJyZWFkX21ldGFkYXRhIiwicHJvamVjdCI6eyJpZCI6IjE0NDk0YjZjLTIyZWUtNDAzNy1iYTFkLTVlZTYyMDMyYzE0OCJ9fSx7ImFjY2Vzc19sZXZlbCI6ImFkbWluIiwicHJvamVjdCI6eyJpZCI6ImU2NTMzOGYwLWVjM2EtNDU4MS05NTYyLWZlNWQyZTM5ZWViYyJ9fSx7ImFjY2Vzc19sZXZlbCI6ImFkbWluIiwicHJvamVjdCI6eyJpZCI6IjhlZjVhZGEzLWQ2MGEtNGFmMy1hNWY3LWRmYmE5MDc5NzBhYyJ9fSx7ImFjY2Vzc19sZXZlbCI6InJlYWRfbWV0YWRhdGEiLCJwcm9qZWN0Ijp7ImlkIjoiOGVmNWFkYTMtZDYwYS00YWYzLWE1ZjctZGZiYTkwNzk3MGFjIn19LHsiYWNjZXNzX2xldmVsIjoiYWRtaW4iLCJwcm9qZWN0Ijp7ImlkIjoiZmQ0MmEzNzUtNjg0YS00NzQwLWIwOTktZmRkYmNjYTE3YTZjIn19LHsiYWNjZXNzX2xldmVsIjoicmVhZF9tZXRhZGF0YSIsInByb2plY3QiOnsiaWQiOiJmZDQyYTM3NS02ODRhLTQ3NDAtYjA5OS1mZGRiY2NhMTdhNmMifX0seyJhY2Nlc3NfbGV2ZWwiOiJhZG1pbiIsInByb2plY3QiOnsiaWQiOiJhZTliMTAxNS00MGIyLTQxNDctOTE3Mi02NmY2ZDA0N2Y0NTgifX0seyJhY2Nlc3NfbGV2ZWwiOiJyZWFkX21ldGFkYXRhIiwicHJvamVjdCI6eyJpZCI6ImFlOWIxMDE1LTQwYjItNDE0Ny05MTcyLTY2ZjZkMDQ3ZjQ1OCJ9fSx7ImFjY2Vzc19sZXZlbCI6ImFkbWluIiwicHJvamVjdCI6eyJpZCI6IjcwMzJjMDI2LTA3MzYtNDYzNC05YzUyLTFkNzVkY2ExMzE3NiJ9fSx7ImFjY2Vzc19sZXZlbCI6ImFkbWluIiwicHJvamVjdCI6eyJpZCI6IjdjYjQ4YTdmLTU4YzYtNDA2ZS05OTNjLTZlZjUzYTZjZmQwYyJ9fSx7ImFjY2Vzc19sZXZlbCI6InJlYWRfbWV0YWRhdGEiLCJwcm9qZWN0Ijp7ImlkIjoiN2NiNDhhN2YtNThjNi00MDZlLTk5M2MtNmVmNTNhNmNmZDBjIn19LHsiYWNjZXNzX2xldmVsIjoiYWRtaW4iLCJwcm9qZWN0Ijp7ImlkIjoiZWI5Y2I5MzgtOWE0Zi00ODExLTlhZDktMzkzMjIyMDQ1ZTkwIn19LHsiYWNjZXNzX2xldmVsIjoicmVhZF9tZXRhZGF0YSIsInByb2plY3QiOnsiaWQiOiJlYjljYjkzOC05YTRmLTQ4MTEtOWFkOS0zOTMyMjIwNDVlOTAifX0seyJhY2Nlc3NfbGV2ZWwiOiJhZG1pbiIsInByb2plY3QiOnsiaWQiOiIyZmQ2NWQ1Yi0wZDg3LTQxZjEtYjE3YS1jZTYyZjEzYmQ5MjQifX0seyJhY2Nlc3NfbGV2ZWwiOiJyZWFkX21ldGFkYXRhIiwicHJvamVjdCI6eyJpZCI6IjJmZDY1ZDViLTBkODctNDFmMS1iMTdhLWNlNjJmMTNiZDkyNCJ9fSx7ImFjY2Vzc19sZXZlbCI6ImFkbWluIiwicHJvamVjdCI6eyJpZCI6ImJhNWY5NWQwLTE4MjgtNGExMy05MTk4LWQyZWY5M2ViM2MwOSJ9fSx7ImFjY2Vzc19sZXZlbCI6InJlYWRfbWV0YWRhdGEiLCJwcm9qZWN0Ijp7ImlkIjoiYmE1Zjk1ZDAtMTgyOC00YTEzLTkxOTgtZDJlZjkzZWIzYzA5In19LHsiYWNjZXNzX2xldmVsIjoiYWRtaW4iLCJwcm9qZWN0Ijp7ImlkIjoiNjFkNjM0ZDItMjVkYy00MjMwLWJlYjUtOWJhMDY4N2ZlMGNmIn19LHsiYWNjZXNzX2xldmVsIjoicmVhZF9tZXRhZGF0YSIsInByb2plY3QiOnsiaWQiOiI2MWQ2MzRkMi0yNWRjLTQyMzAtYmViNS05YmEwNjg3ZmUwY2YifX0seyJhY2Nlc3NfbGV2ZWwiOiJhZG1pbiIsInByb2plY3QiOnsiaWQiOiIyYmE3ZmUzYS0wMjRjLTRlY2ItOTdkYS1kOTczYzdlODJjMDQifX0seyJhY2Nlc3NfbGV2ZWwiOiJyZWFkX21ldGFkYXRhIiwicHJvamVjdCI6eyJpZCI6IjJiYTdmZTNhLTAyNGMtNGVjYi05N2RhLWQ5NzNjN2U4MmMwNCJ9fV19LCJpYXQiOjE3Mzk5MDUwNzAsImlzcyI6Imh0dHBzOi8vYXV0aC5wcm8uaGFzdXJhLmlvL2Rkbi90b2tlbiIsInN1YiI6IjBiOWEwMWViLTIxM2QtNDgzYy04NTAzLWY1ZDM5N2M3YzUzMSJ9.5SakRltqO1SL5xxK3_AVXzjEECEDWvQg7uhRiGK8RwHiVE2Fr9RyEaQ2loJ_FZP6CItMUmb2JZhI3sYCzVzJAw"
+    },
+    "ddn_headers": { "x-hasura-oauth-services": "e30=" }
+  },
+  {
+    "type": "user_message",
+    "message": "Show me information about my Snowflake Chinook schema",
+    "uploads": [],
+    "timestamp": "2025-02-18T18:58:03.793Z"
+  },
+  {
+    "type": "accept_interaction",
+    "interaction_id": "0542692a-ce2f-4a8b-bec3-69b131d0cf3d",
+    "thread_id": "c8e1fed9-2046-413d-90b9-141aa0f414a5"
+  },
+  {
+    "type": "title_updated",
+    "title": "Show me information about my Snowflake C"
+  },
+  {
+    "type": "llm_call",
+    "assistant_action_id": "365ef80a-8530-4206-9990-b6d9b608cfd6"
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "365ef80a-8530-4206-9990-b6d9b608cfd6",
+    "message_chunk": "I'll help you e"
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "365ef80a-8530-4206-9990-b6d9b608cfd6",
+    "message_chunk": "xplore the Chinook database schema"
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "365ef80a-8530-4206-9990-b6d9b608cfd6",
+    "message_chunk": ", which appears to be a music store database. Let me create a su"
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "365ef80a-8530-4206-9990-b6d9b608cfd6",
+    "message_chunk": "mmary of the main ta"
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "365ef80a-8530-4206-9990-b6d9b608cfd6",
+    "message_chunk": "bles and their relationships."
+  },
+  {
+    "type": "assistant_code_response",
+    "assistant_action_id": "365ef80a-8530-4206-9990-b6d9b608cfd6",
+    "code_block_id": "efe2703f-0eed-4730-9f00-a394a65a557f",
+    "code_chunk": null,
+    "query_plan_chunk": "1."
+  },
+  {
+    "type": "assistant_code_response",
+    "assistant_action_id": "365ef80a-8530-4206-9990-b6d9b608cfd6",
+    "code_block_id": "efe2703f-0eed-4730-9f00-a394a65a557f",
+    "code_chunk": null,
+    "query_plan_chunk": " Query the tables to get a high-level ov"
+  },
+  {
+    "type": "assistant_code_response",
+    "assistant_action_id": "365ef80a-8530-4206-9990-b6d9b608cfd6",
+    "code_block_id": "efe2703f-0eed-4730-9f00-a394a65a557f",
+    "code_chunk": null,
+    "query_plan_chunk": "erview of the data volume in each t"
+  },
+  {
+    "type": "assistant_code_response",
+    "assistant_action_id": "365ef80a-8530-4206-9990-b6d9b608cfd6",
+    "code_block_id": "efe2703f-0eed-4730-9f00-a394a65a557f",
+    "code_chunk": null,
+    "query_plan_chunk": "able\n2. Create a summary show"
+  },
+  {
+    "type": "assistant_code_response",
+    "assistant_action_id": "365ef80a-8530-4206-9990-b6d9b608cfd6",
+    "code_block_id": "efe2703f-0eed-4730-9f00-a394a65a557f",
+    "code_chunk": null,
+    "query_plan_chunk": "ing:\n - Table name\n - Number of rows"
+  },
+  {
+    "type": "assistant_code_response",
+    "assistant_action_id": "365ef80a-8530-4206-9990-b6d9b608cfd6",
+    "code_block_id": "efe2703f-0eed-4730-9f00-a394a65a557f",
+    "code_chunk": null,
+    "query_plan_chunk": "\n - Key columns\n3. Store this information in an artifact for easy reference"
+  },
+  {
+    "type": "assistant_code_response",
+    "assistant_action_id": "365ef80a-8530-4206-9990-b6d9b608cfd6",
+    "code_block_id": "efe2703f-0eed-4730-9f00-a394a65a557f",
+    "code_chunk": "# Get row counts fo",
+    "query_plan_chunk": null
+  },
+  {
+    "type": "assistant_code_response",
+    "assistant_action_id": "365ef80a-8530-4206-9990-b6d9b608cfd6",
+    "code_block_id": "efe2703f-0eed-4730-9f00-a394a65a557f",
+    "code_chunk": "r each main table\ntables",
+    "query_plan_chunk": null
+  },
+  {
+    "type": "assistant_code_response",
+    "assistant_action_id": "365ef80a-8530-4206-9990-b6d9b608cfd6",
+    "code_block_id": "efe2703f-0eed-4730-9f00-a394a65a557f",
+    "code_chunk": " = [\n 'AL",
+    "query_plan_chunk": null
+  },
+  {
+    "type": "assistant_code_response",
+    "assistant_action_id": "365ef80a-8530-4206-9990-b6d9b608cfd6",
+    "code_block_id": "efe2703f-0eed-4730-9f00-a394a65a557f",
+    "code_chunk": "BUM', 'ARTIST', 'CUSTOM",
+    "query_plan_chunk": null
+  },
+  {
+    "type": "assistant_code_response",
+    "assistant_action_id": "365ef80a-8530-4206-9990-b6d9b608cfd6",
+    "code_block_id": "efe2703f-0eed-4730-9f00-a394a65a557f",
+    "code_chunk": "ER', 'EMPLOYEE', 'GENR",
+    "query_plan_chunk": null
+  },
+  {
+    "type": "assistant_code_response",
+    "assistant_action_id": "365ef80a-8530-4206-9990-b6d9b608cfd6",
+    "code_block_id": "efe2703f-0eed-4730-9f00-a394a65a557f",
+    "code_chunk": "E', \n 'INVOICE', 'INVO",
+    "query_plan_chunk": null
+  },
+  {
+    "type": "assistant_code_response",
+    "assistant_action_id": "365ef80a-8530-4206-9990-b6d9b608cfd6",
+    "code_block_id": "efe2703f-0eed-4730-9f00-a394a65a557f",
+    "code_chunk": "ICELINE', 'MEDIAT",
+    "query_plan_chunk": null
+  },
+  {
+    "type": "assistant_code_response",
+    "assistant_action_id": "365ef80a-8530-4206-9990-b6d9b608cfd6",
+    "code_block_id": "efe2703f-0eed-4730-9f00-a394a65a557f",
+    "code_chunk": "YPE', 'PLAYLIST', \n 'PLAYLISTTRACK',",
+    "query_plan_chunk": null
+  },
+  {
+    "type": "assistant_code_response",
+    "assistant_action_id": "365ef80a-8530-4206-9990-b6d9b608cfd6",
+    "code_block_id": "efe2703f-0eed-4730-9f00-a394a65a557f",
+    "code_chunk": " 'TRACK'\n]\n\ntable_stats =",
+    "query_plan_chunk": null
+  },
+  {
+    "type": "assistant_code_response",
+    "assistant_action_id": "365ef80a-8530-4206-9990-b6d9b608cfd6",
+    "code_block_id": "efe2703f-0eed-4730-9f00-a394a65a557f",
+    "code_chunk": " []\nfor table in tables:\n s",
+    "query_plan_chunk": null
+  },
+  {
+    "type": "assistant_code_response",
+    "assistant_action_id": "365ef80a-8530-4206-9990-b6d9b608cfd6",
+    "code_block_id": "efe2703f-0eed-4730-9f00-a394a65a557f",
+    "code_chunk": "ql = f\"SELECT COUNT(1) as count FROM ",
+    "query_plan_chunk": null
+  },
+  {
+    "type": "assistant_code_response",
+    "assistant_action_id": "365ef80a-8530-4206-9990-b6d9b608cfd6",
+    "code_block_id": "efe2703f-0eed-4730-9f00-a394a65a557f",
+    "code_chunk": "app.CHINOOK_PUBLIC_{tab",
+    "query_plan_chunk": null
+  },
+  {
+    "type": "assistant_code_response",
+    "assistant_action_id": "365ef80a-8530-4206-9990-b6d9b608cfd6",
+    "code_block_id": "efe2703f-0eed-4730-9f00-a394a65a557f",
+    "code_chunk": "le}\"\n result = exe",
+    "query_plan_chunk": null
+  },
+  {
+    "type": "assistant_code_response",
+    "assistant_action_id": "365ef80a-8530-4206-9990-b6d9b608cfd6",
+    "code_block_id": "efe2703f-0eed-4730-9f00-a394a65a557f",
+    "code_chunk": "cutor.run_sql(sql)\n ",
+    "query_plan_chunk": null
+  },
+  {
+    "type": "assistant_code_response",
+    "assistant_action_id": "365ef80a-8530-4206-9990-b6d9b608cfd6",
+    "code_block_id": "efe2703f-0eed-4730-9f00-a394a65a557f",
+    "code_chunk": " count = result[0]['count'] if result el",
+    "query_plan_chunk": null
+  },
+  {
+    "type": "assistant_code_response",
+    "assistant_action_id": "365ef80a-8530-4206-9990-b6d9b608cfd6",
+    "code_block_id": "efe2703f-0eed-4730-9f00-a394a65a557f",
+    "code_chunk": "se 0\n \n table_st",
+    "query_plan_chunk": null
+  },
+  {
+    "type": "assistant_code_response",
+    "assistant_action_id": "365ef80a-8530-4206-9990-b6d9b608cfd6",
+    "code_block_id": "efe2703f-0eed-4730-9f00-a394a65a557f",
+    "code_chunk": "ats.append({\n 'Table': table,",
+    "query_plan_chunk": null
+  },
+  {
+    "type": "assistant_code_response",
+    "assistant_action_id": "365ef80a-8530-4206-9990-b6d9b608cfd6",
+    "code_block_id": "efe2703f-0eed-4730-9f00-a394a65a557f",
+    "code_chunk": "\n 'Row Coun",
+    "query_plan_chunk": null
+  },
+  {
+    "type": "assistant_code_response",
+    "assistant_action_id": "365ef80a-8530-4206-9990-b6d9b608cfd6",
+    "code_block_id": "efe2703f-0eed-4730-9f00-a394a65a557f",
+    "code_chunk": "t': count,\n 'Des",
+    "query_plan_chunk": null
+  },
+  {
+    "type": "assistant_code_response",
+    "assistant_action_id": "365ef80a-8530-4206-9990-b6d9b608cfd6",
+    "code_block_id": "efe2703f-0eed-4730-9f00-a394a65a557f",
+    "code_chunk": "cription': {\n 'ALBUM': 'Contains album infor",
+    "query_plan_chunk": null
+  },
+  {
+    "type": "assistant_code_response",
+    "assistant_action_id": "365ef80a-8530-4206-9990-b6d9b608cfd6",
+    "code_block_id": "efe2703f-0eed-4730-9f00-a394a65a557f",
+    "code_chunk": "mation including title and artist',\n ",
+    "query_plan_chunk": null
+  },
+  {
+    "type": "assistant_code_response",
+    "assistant_action_id": "365ef80a-8530-4206-9990-b6d9b608cfd6",
+    "code_block_id": "efe2703f-0eed-4730-9f00-a394a65a557f",
+    "code_chunk": " 'ARTIST': 'List of ar",
+    "query_plan_chunk": null
+  },
+  {
+    "type": "assistant_code_response",
+    "assistant_action_id": "365ef80a-8530-4206-9990-b6d9b608cfd6",
+    "code_block_id": "efe2703f-0eed-4730-9f00-a394a65a557f",
+    "code_chunk": "tists',\n 'CUSTOMER': 'Customer deta",
+    "query_plan_chunk": null
+  },
+  {
+    "type": "assistant_code_response",
+    "assistant_action_id": "365ef80a-8530-4206-9990-b6d9b608cfd6",
+    "code_block_id": "efe2703f-0eed-4730-9f00-a394a65a557f",
+    "code_chunk": "ils including contact information',\n 'EMP",
+    "query_plan_chunk": null
+  },
+  {
+    "type": "assistant_code_response",
+    "assistant_action_id": "365ef80a-8530-4206-9990-b6d9b608cfd6",
+    "code_block_id": "efe2703f-0eed-4730-9f00-a394a65a557f",
+    "code_chunk": "LOYEE': 'Employee information ",
+    "query_plan_chunk": null
+  },
+  {
+    "type": "assistant_code_response",
+    "assistant_action_id": "365ef80a-8530-4206-9990-b6d9b608cfd6",
+    "code_block_id": "efe2703f-0eed-4730-9f00-a394a65a557f",
+    "code_chunk": "including hierarchy',\n 'GENR",
+    "query_plan_chunk": null
+  },
+  {
+    "type": "assistant_code_response",
+    "assistant_action_id": "365ef80a-8530-4206-9990-b6d9b608cfd6",
+    "code_block_id": "efe2703f-0eed-4730-9f00-a394a65a557f",
+    "code_chunk": "E': 'Music genres',\n 'INV",
+    "query_plan_chunk": null
+  },
+  {
+    "type": "assistant_code_response",
+    "assistant_action_id": "365ef80a-8530-4206-9990-b6d9b608cfd6",
+    "code_block_id": "efe2703f-0eed-4730-9f00-a394a65a557f",
+    "code_chunk": "OICE': 'Sales invoices',\n ",
+    "query_plan_chunk": null
+  },
+  {
+    "type": "assistant_code_response",
+    "assistant_action_id": "365ef80a-8530-4206-9990-b6d9b608cfd6",
+    "code_block_id": "efe2703f-0eed-4730-9f00-a394a65a557f",
+    "code_chunk": " 'INVOICELINE': 'Indi",
+    "query_plan_chunk": null
+  },
+  {
+    "type": "assistant_code_response",
+    "assistant_action_id": "365ef80a-8530-4206-9990-b6d9b608cfd6",
+    "code_block_id": "efe2703f-0eed-4730-9f00-a394a65a557f",
+    "code_chunk": "vidual line items ",
+    "query_plan_chunk": null
+  },
+  {
+    "type": "assistant_code_response",
+    "assistant_action_id": "365ef80a-8530-4206-9990-b6d9b608cfd6",
+    "code_block_id": "efe2703f-0eed-4730-9f00-a394a65a557f",
+    "code_chunk": "of each invoice'",
+    "query_plan_chunk": null
+  },
+  {
+    "type": "assistant_code_response",
+    "assistant_action_id": "365ef80a-8530-4206-9990-b6d9b608cfd6",
+    "code_block_id": "efe2703f-0eed-4730-9f00-a394a65a557f",
+    "code_chunk": ",\n 'MEDIATYPE': 'Types of me",
+    "query_plan_chunk": null
+  },
+  {
+    "type": "assistant_code_response",
+    "assistant_action_id": "365ef80a-8530-4206-9990-b6d9b608cfd6",
+    "code_block_id": "efe2703f-0eed-4730-9f00-a394a65a557f",
+    "code_chunk": "dia (e.g., MPEG audio, AAC au",
+    "query_plan_chunk": null
+  },
+  {
+    "type": "assistant_code_response",
+    "assistant_action_id": "365ef80a-8530-4206-9990-b6d9b608cfd6",
+    "code_block_id": "efe2703f-0eed-4730-9f00-a394a65a557f",
+    "code_chunk": "dio)',\n 'PLAYLIST': ",
+    "query_plan_chunk": null
+  },
+  {
+    "type": "assistant_code_response",
+    "assistant_action_id": "365ef80a-8530-4206-9990-b6d9b608cfd6",
+    "code_block_id": "efe2703f-0eed-4730-9f00-a394a65a557f",
+    "code_chunk": "'Named playlists',\n 'PLAYLIS",
+    "query_plan_chunk": null
+  },
+  {
+    "type": "assistant_code_response",
+    "assistant_action_id": "365ef80a-8530-4206-9990-b6d9b608cfd6",
+    "code_block_id": "efe2703f-0eed-4730-9f00-a394a65a557f",
+    "code_chunk": "TTRACK': 'Tracks in each p",
+    "query_plan_chunk": null
+  },
+  {
+    "type": "assistant_code_response",
+    "assistant_action_id": "365ef80a-8530-4206-9990-b6d9b608cfd6",
+    "code_block_id": "efe2703f-0eed-4730-9f00-a394a65a557f",
+    "code_chunk": "laylist',\n 'TRACK': ",
+    "query_plan_chunk": null
+  },
+  {
+    "type": "assistant_code_response",
+    "assistant_action_id": "365ef80a-8530-4206-9990-b6d9b608cfd6",
+    "code_block_id": "efe2703f-0eed-4730-9f00-a394a65a557f",
+    "code_chunk": "'Individual songs/tracks with",
+    "query_plan_chunk": null
+  },
+  {
+    "type": "assistant_code_response",
+    "assistant_action_id": "365ef80a-8530-4206-9990-b6d9b608cfd6",
+    "code_block_id": "efe2703f-0eed-4730-9f00-a394a65a557f",
+    "code_chunk": " details'\n }[ta",
+    "query_plan_chunk": null
+  },
+  {
+    "type": "assistant_code_response",
+    "assistant_action_id": "365ef80a-8530-4206-9990-b6d9b608cfd6",
+    "code_block_id": "efe2703f-0eed-4730-9f00-a394a65a557f",
+    "code_chunk": "ble]\n })\n\nexec",
+    "query_plan_chunk": null
+  },
+  {
+    "type": "assistant_code_response",
+    "assistant_action_id": "365ef80a-8530-4206-9990-b6d9b608cfd6",
+    "code_block_id": "efe2703f-0eed-4730-9f00-a394a65a557f",
+    "code_chunk": "utor.store_artifact(\n 'schema_overvi",
+    "query_plan_chunk": null
+  },
+  {
+    "type": "assistant_code_response",
+    "assistant_action_id": "365ef80a-8530-4206-9990-b6d9b608cfd6",
+    "code_block_id": "efe2703f-0eed-4730-9f00-a394a65a557f",
+    "code_chunk": "ew',\n 'Chinook Database",
+    "query_plan_chunk": null
+  },
+  {
+    "type": "assistant_code_response",
+    "assistant_action_id": "365ef80a-8530-4206-9990-b6d9b608cfd6",
+    "code_block_id": "efe2703f-0eed-4730-9f00-a394a65a557f",
+    "code_chunk": " Schema Overview',\n 'table',\n table_stats\n)",
+    "query_plan_chunk": null
+  },
+  {
+    "type": "assistant_response_llm_usage",
+    "assistant_action_id": "365ef80a-8530-4206-9990-b6d9b608cfd6",
+    "usage": {
+      "provider": "anthropic",
+      "model": "claude-3-5-sonnet-20241022",
+      "input_tokens": 7122,
+      "output_tokens": 513
+    }
+  },
+  {
+    "type": "executing_code",
+    "code_block_id": "efe2703f-0eed-4730-9f00-a394a65a557f"
+  },
+  {
+    "type": "code_output",
+    "code_block_id": "efe2703f-0eed-4730-9f00-a394a65a557f",
+    "output_chunk": "SQL statement returned 1 rows.\n"
+  },
+  {
+    "type": "code_output",
+    "code_block_id": "efe2703f-0eed-4730-9f00-a394a65a557f",
+    "output_chunk": "SQL statement returned 1 rows.\n"
+  },
+  {
+    "type": "code_output",
+    "code_block_id": "efe2703f-0eed-4730-9f00-a394a65a557f",
+    "output_chunk": "SQL statement returned 1 rows.\n"
+  },
+  {
+    "type": "code_output",
+    "code_block_id": "efe2703f-0eed-4730-9f00-a394a65a557f",
+    "output_chunk": "SQL statement returned 1 rows.\n"
+  },
+  {
+    "type": "code_output",
+    "code_block_id": "efe2703f-0eed-4730-9f00-a394a65a557f",
+    "output_chunk": "SQL statement returned 1 rows.\n"
+  },
+  {
+    "type": "code_output",
+    "code_block_id": "efe2703f-0eed-4730-9f00-a394a65a557f",
+    "output_chunk": "SQL statement returned 1 rows.\n"
+  },
+  {
+    "type": "code_output",
+    "code_block_id": "efe2703f-0eed-4730-9f00-a394a65a557f",
+    "output_chunk": "SQL statement returned 1 rows.\n"
+  },
+  {
+    "type": "code_output",
+    "code_block_id": "efe2703f-0eed-4730-9f00-a394a65a557f",
+    "output_chunk": "SQL statement returned 1 rows.\n"
+  },
+  {
+    "type": "code_output",
+    "code_block_id": "efe2703f-0eed-4730-9f00-a394a65a557f",
+    "output_chunk": "SQL statement returned 1 rows.\n"
+  },
+  {
+    "type": "code_output",
+    "code_block_id": "efe2703f-0eed-4730-9f00-a394a65a557f",
+    "output_chunk": "SQL statement returned 1 rows.\n"
+  },
+  {
+    "type": "code_output",
+    "code_block_id": "efe2703f-0eed-4730-9f00-a394a65a557f",
+    "output_chunk": "SQL statement returned 1 rows.\n"
+  },
+  {
+    "type": "artifact_update",
+    "code_block_id": "efe2703f-0eed-4730-9f00-a394a65a557f",
+    "artifact": {
+      "identifier": "schema_overview",
+      "title": "Chinook Database Schema Overview",
+      "artifact_type": "table",
+      "data": [
+        {
+          "Table": "ALBUM",
+          "Row Count": 347,
+          "Description": "Contains album information including title and artist"
+        },
+        {
+          "Table": "ARTIST",
+          "Row Count": 275,
+          "Description": "List of artists"
+        },
+        {
+          "Table": "CUSTOMER",
+          "Row Count": 109,
+          "Description": "Customer details including contact information"
+        },
+        {
+          "Table": "EMPLOYEE",
+          "Row Count": 8,
+          "Description": "Employee information including hierarchy"
+        },
+        { "Table": "GENRE", "Row Count": 26, "Description": "Music genres" },
+        {
+          "Table": "INVOICE",
+          "Row Count": 614,
+          "Description": "Sales invoices"
+        },
+        {
+          "Table": "INVOICELINE",
+          "Row Count": 2240,
+          "Description": "Individual line items of each invoice"
+        },
+        {
+          "Table": "MEDIATYPE",
+          "Row Count": 5,
+          "Description": "Types of media (e.g., MPEG audio, AAC audio)"
+        },
+        {
+          "Table": "PLAYLIST",
+          "Row Count": 18,
+          "Description": "Named playlists"
+        },
+        {
+          "Table": "PLAYLISTTRACK",
+          "Row Count": 8715,
+          "Description": "Tracks in each playlist"
+        },
+        {
+          "Table": "TRACK",
+          "Row Count": 3503,
+          "Description": "Individual songs/tracks with details"
+        }
+      ]
+    }
+  },
+  {
+    "type": "code_output",
+    "code_block_id": "efe2703f-0eed-4730-9f00-a394a65a557f",
+    "output_chunk": "Stored table artifact: identifier = 'schema_overview', title = 'Chinook Database Schema Overview', number of rows = 11, sample rows = [{'Table': 'ALBUM', 'Row Count': 347, 'Description': 'Contains album information including title and artist'}, {'Table': 'ARTIST', 'Row Count': 275, 'Description': 'List of artists'}]\n"
+  },
+  {
+    "type": "code_execution_complete",
+    "code_block_id": "efe2703f-0eed-4730-9f00-a394a65a557f"
+  },
+  {
+    "type": "llm_call",
+    "assistant_action_id": "37aaacdf-c5d5-42dd-b5d0-750a0b991333"
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "37aaacdf-c5d5-42dd-b5d0-750a0b991333",
+    "message_chunk": "Here's an overview of y"
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "37aaacdf-c5d5-42dd-b5d0-750a0b991333",
+    "message_chunk": "our Chinook database schema:\n"
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "37aaacdf-c5d5-42dd-b5d0-750a0b991333",
+    "message_chunk": "<artifact identifier='schema_overvi"
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "37aaacdf-c5d5-42dd-b5d0-750a0b991333",
+    "message_chunk": "ew' warning='I cannot see the"
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "37aaacdf-c5d5-42dd-b5d0-750a0b991333",
+    "message_chunk": " full data so I must not make up observations"
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "37aaacdf-c5d5-42dd-b5d0-750a0b991333",
+    "message_chunk": "' />\n\nThis is a music sto"
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "37aaacdf-c5d5-42dd-b5d0-750a0b991333",
+    "message_chunk": "re database with several key com"
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "37aaacdf-c5d5-42dd-b5d0-750a0b991333",
+    "message_chunk": "ponents:\n1. Music ca"
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "37aaacdf-c5d5-42dd-b5d0-750a0b991333",
+    "message_chunk": "talog: ARTIST → ALBUM → TRACK hie"
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "37aaacdf-c5d5-42dd-b5d0-750a0b991333",
+    "message_chunk": "rarchy\n2. Sales:"
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "37aaacdf-c5d5-42dd-b5d0-750a0b991333",
+    "message_chunk": " CUSTOMER → INVOICE → INVOICELINE struc"
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "37aaacdf-c5d5-42dd-b5d0-750a0b991333",
+    "message_chunk": "ture\n3. Playlists: PLAYLIST and PLAYLISTTRACK f"
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "37aaacdf-c5d5-42dd-b5d0-750a0b991333",
+    "message_chunk": "or organizing tracks\n4. Supporting d"
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "37aaacdf-c5d5-42dd-b5d0-750a0b991333",
+    "message_chunk": "ata: GENRE and MEDIATYPE for t"
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "37aaacdf-c5d5-42dd-b5d0-750a0b991333",
+    "message_chunk": "rack categorization\n5. Staff: EMPLOYEE table wi"
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "37aaacdf-c5d5-42dd-b5d0-750a0b991333",
+    "message_chunk": "th reporting hierarchy\n\nWould you like to explore any"
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "37aaacdf-c5d5-42dd-b5d0-750a0b991333",
+    "message_chunk": " particular aspect of this schema in more detail?"
+  },
+  {
+    "type": "assistant_response_llm_usage",
+    "assistant_action_id": "37aaacdf-c5d5-42dd-b5d0-750a0b991333",
+    "usage": {
+      "provider": "anthropic",
+      "model": "claude-3-5-sonnet-20241022",
+      "input_tokens": 7970,
+      "output_tokens": 145
+    }
+  },
+  { "type": "completion" }
+]

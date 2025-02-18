@@ -7,6 +7,7 @@ import {
   useExternalStoreRuntime,
 } from "@assistant-ui/react";
 import { useState } from "react";
+import { PlanToolUI } from "./components/PlanToolUI";
 
 interface TextContent {
   type: "text";
@@ -127,6 +128,7 @@ export function MyRuntimeProvider({
   return (
     <AssistantRuntimeProvider runtime={runtime}>
       {children}
+      <PlanToolUI />
     </AssistantRuntimeProvider>
   );
 }

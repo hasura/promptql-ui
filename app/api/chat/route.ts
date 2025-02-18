@@ -83,11 +83,23 @@ export async function POST(req: Request) {
                 const jsonStr = line.slice(6);
                 try {
                   const chunk = JSON.parse(jsonStr);
-                  if (
-                    chunk.type === "assistant_action_chunk" &&
-                    chunk.message
-                  ) {
-                    controller.enqueue(encoder.encode(chunk.message));
+                  if (chunk.type === "assistant_action_chunk") {
+                    // Handle message chunks
+                    if (chunk.message) {
+                      controller.enqueue(encoder.encode(chunk.message));
+                    }
+
+                    // Handle plan chunks
+                    if (chunk.plan) {
+                      const toolCall = {
+                        type: "tool_call",
+                        tool: "plan_display",
+                        args: { plan: chunk.plan },
+                      };
+                      controller.enqueue(
+                        encoder.encode(JSON.stringify(toolCall) + "\n")
+                      );
+                    }
                   }
                 } catch {
                   console.warn("Failed to parse chunk:", jsonStr);
