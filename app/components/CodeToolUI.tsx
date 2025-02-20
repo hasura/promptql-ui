@@ -6,6 +6,9 @@ import { javascript } from "@codemirror/lang-javascript";
 import { python } from "@codemirror/lang-python";
 import { sql } from "@codemirror/lang-sql";
 import { json } from "@codemirror/lang-json";
+import { vscodeDark } from "@uiw/codemirror-theme-vscode";
+import { tags as t } from "@lezer/highlight";
+import { createTheme } from "@uiw/codemirror-themes";
 
 interface CodeDisplayArgs {
   code: string;
@@ -14,6 +17,25 @@ interface CodeDisplayArgs {
 }
 
 type ExecutionState = "implementing" | "executing" | "executed";
+
+// Custom theme definition
+const customTheme = createTheme({
+  theme: "light",
+  settings: {
+    background: "#ffffff",
+    foreground: "#4B5563",
+    selection: "#036dd626",
+    selectionMatch: "#036dd626",
+    lineHighlight: "#8a91991a",
+  },
+  styles: [
+    { tag: t.comment, color: "#787B8099" },
+    { tag: t.variableName, color: "#0550AE" },
+    { tag: t.string, color: "#1A7F37" },
+    { tag: t.keyword, color: "#CF222E" },
+    { tag: t.function(t.variableName), color: "#8250DF" },
+  ],
+});
 
 const CodeDisplay = ({ args: rawArgs }: { args: CodeDisplayArgs | string }) => {
   const [open, setOpen] = useState(true);
@@ -56,12 +78,28 @@ const CodeDisplay = ({ args: rawArgs }: { args: CodeDisplayArgs | string }) => {
     executed: "Executed",
   };
 
+  const codeEditorSetup = {
+    lineNumbers: true,
+    highlightActiveLineGutter: false,
+    highlightActiveLine: false,
+    foldGutter: true,
+    dropCursor: true,
+    allowMultipleSelections: true,
+    indentOnInput: true,
+    bracketMatching: true,
+    closeBrackets: true,
+    autocompletion: true,
+    rectangularSelection: true,
+    highlightSelectionMatches: true,
+    syntaxHighlighting: true,
+  };
+
   return (
-    <div className="mb-4 w-full rounded-lg border">
+    <div className="mb-4 w-full rounded-lg border shadow-sm">
       <div>
         <button
           onClick={() => setOpen(!open)}
-          className="flex w-full items-center justify-between px-4 py-3 hover:bg-gray-50"
+          className="flex w-full items-center justify-between px-4 py-3 hover:bg-gray-50 bg-gray-50/50"
         >
           <div className="flex items-center gap-2">
             {icons[state]}
@@ -76,17 +114,14 @@ const CodeDisplay = ({ args: rawArgs }: { args: CodeDisplayArgs | string }) => {
         </button>
         {open && (
           <div className="border-t px-4 py-3">
-            <div className="h-[200px] overflow-auto">
+            <div className="rounded-lg overflow-hidden border">
               <CodeMirror
                 value={args.code}
                 height="200px"
                 extensions={[detectLanguage(args.code)]}
                 editable={false}
-                basicSetup={{
-                  lineNumbers: true,
-                  highlightActiveLineGutter: false,
-                  highlightActiveLine: false,
-                }}
+                theme={customTheme}
+                basicSetup={codeEditorSetup}
                 onUpdate={(viewUpdate) => {
                   const scrollDom = viewUpdate.view.scrollDOM;
                   scrollDom.scrollTop = scrollDom.scrollHeight;
@@ -96,30 +131,22 @@ const CodeDisplay = ({ args: rawArgs }: { args: CodeDisplayArgs | string }) => {
             {(args.output || state === "executing") && (
               <>
                 <div className="my-2 border-t" />
-                <div className="h-[200px] overflow-auto">
+                <div className="rounded-lg overflow-hidden border">
                   {args.output ? (
                     <CodeMirror
                       value={args.output}
                       height="200px"
                       editable={false}
-                      basicSetup={{
-                        lineNumbers: true,
-                        highlightActiveLineGutter: false,
-                        highlightActiveLine: false,
-                      }}
+                      theme={customTheme}
+                      basicSetup={codeEditorSetup}
                       onUpdate={(viewUpdate) => {
                         const scrollDom = viewUpdate.view.scrollDOM;
                         scrollDom.scrollTop = scrollDom.scrollHeight;
                       }}
                     />
                   ) : (
-                    <div className="flex h-full flex-col gap-2">
-                      {[...Array(1)].map((_, i) => (
-                        <div
-                          key={i}
-                          className="h-full w-full animate-pulse rounded bg-gray-200"
-                        />
-                      ))}
+                    <div className="flex h-[200px] items-center justify-center">
+                      <div className="h-full w-full animate-pulse rounded bg-gray-200" />
                     </div>
                   )}
                 </div>
@@ -128,17 +155,13 @@ const CodeDisplay = ({ args: rawArgs }: { args: CodeDisplayArgs | string }) => {
             {args.error && (
               <>
                 <div className="my-2 border-t" />
-                <div className="h-[200px] overflow-auto">
+                <div className="rounded-lg overflow-hidden border">
                   <CodeMirror
                     value={args.error}
                     height="200px"
                     editable={false}
-                    theme="dark"
-                    basicSetup={{
-                      lineNumbers: true,
-                      highlightActiveLineGutter: false,
-                      highlightActiveLine: false,
-                    }}
+                    theme={vscodeDark}
+                    basicSetup={codeEditorSetup}
                     onUpdate={(viewUpdate) => {
                       const scrollDom = viewUpdate.view.scrollDOM;
                       scrollDom.scrollTop = scrollDom.scrollHeight;
