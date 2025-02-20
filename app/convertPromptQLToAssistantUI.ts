@@ -17,77 +17,112 @@ export interface AccumulatedContent {
 export function convertPromptQLToAssistantUI(
   response: ChunkResponse
 ): ThreadMessageLike[] {
-  const messages: ThreadMessageLike[] = [];
+  if (response.interactions.length === 0) return [];
+
+  // Group actions by index and accumulate their content
+  const actionsByIndex = new Map<
+    number,
+    {
+      message: string;
+      plan: string | null;
+      code: {
+        content: string;
+        output: string[];
+        error?: string;
+      } | null;
+    }
+  >();
 
   for (const interaction of response.interactions) {
-    // First, add the user message if it exists
-    const userMessage = interaction.chunks.find(
-      (chunk) => chunk.type === "user_message"
-    );
-
-    if (userMessage && "message" in userMessage) {
-      messages.push({
-        role: "user",
-        content: [{ type: "text", text: userMessage.message }],
-      });
-    }
-
-    // Process each action in order
     for (const action of interaction.actions) {
-      const content: (TextContentPart | ToolCallContentPart)[] = [];
+      const index = action.index || 0;
 
-      // Add code content if it exists
+      // Get or create accumulator for this index
+      let accumulator = actionsByIndex.get(index);
+      if (!accumulator) {
+        accumulator = {
+          message: "",
+          plan: null,
+          code: null,
+        };
+        actionsByIndex.set(index, accumulator);
+      }
+
+      // Accumulate content
+      if (action.message) {
+        accumulator.message += action.message;
+      }
+      if (action.plan) {
+        accumulator.plan = (accumulator.plan || "") + action.plan;
+      }
       if (action.code) {
-        // Add query plan if it exists
-        if (action.code.query_plan) {
-          content.push({
-            type: "tool-call",
-            toolName: "plan_display",
-            args: {
-              plan: action.code.query_plan,
-            },
-            toolCallId: `${action.code.blockId}-plan`,
-            argsText: JSON.stringify({
-              args: {
-                plan: action.code.query_plan,
-              },
-            }),
-          });
+        if (!accumulator.code) {
+          accumulator.code = {
+            content: "",
+            output: [],
+            error: undefined,
+          };
         }
+        accumulator.code.content += action.code.content || "";
+        if (action.code.output) {
+          accumulator.code.output = action.code.output;
+        }
+        if (action.code.error) {
+          accumulator.code.error = action.code.error;
+        }
+      }
+    }
+  }
 
-        content.push({
+  // Convert accumulated content to messages
+  return Array.from(actionsByIndex.entries())
+    .sort(([a], [b]) => a - b)
+    .map(([, content]) => {
+      const messageParts: (TextContentPart | ToolCallContentPart)[] = [];
+
+      // Add plan if exists
+      if (content.plan) {
+        messageParts.push({
+          type: "tool-call",
+          toolName: "plan_display",
+          args: { plan: content.plan },
+          toolCallId: "plan",
+          argsText: JSON.stringify({ args: { plan: content.plan } }),
+        });
+      }
+
+      // Add code if exists
+      if (content.code) {
+        messageParts.push({
           type: "tool-call",
           toolName: "code_display",
           args: {
-            code: action.code.content,
-            output: action.code.output?.join("") || "",
-            error: "",
+            code: content.code.content,
+            output: content.code.output.join("") || "",
+            error: content.code.error || "",
           },
-          toolCallId: action.code.blockId,
+          toolCallId: "code",
           argsText: JSON.stringify({
             args: {
-              code: action.code.content,
-              output: action.code.output?.join("") || "",
-              error: "",
+              code: content.code.content,
+              output: content.code.output.join("") || "",
+              error: content.code.error || "",
             },
           }),
         });
       }
 
-      // Add text content if it exists
-      if (action.message) {
-        content.push({ type: "text", text: action.message });
-      }
-
-      // Create a single message for each action, combining all content parts
-      if (content.length > 0) {
-        messages.push({
-          role: "assistant",
-          content,
+      // Add message if exists
+      if (content.message) {
+        messageParts.push({
+          type: "text",
+          text: content.message,
         });
       }
-    }
-  }
 
-  return messages;
+      return {
+        role: "assistant",
+        content: messageParts,
+      };
+    });
 }

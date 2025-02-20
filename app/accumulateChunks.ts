@@ -73,7 +73,7 @@ type CodeOutputChunk = BaseChunk & {
 };
 
 type ArtifactUpdateChunk = BaseChunk & {
-  type: "artifact_update";
+  type: "artifact_update_chunk";
   artifact: {
     identifier: string;
     title: string;
@@ -90,7 +90,17 @@ type CompletionChunk = BaseChunk & {
   type: "completion";
 };
 
-// Union type of all possible chunks
+export type AssistantActionChunk = BaseChunk & {
+  type: "assistant_action_chunk";
+  message: string | null;
+  plan: string | null;
+  code: string | null;
+  code_output: string | null;
+  code_error: string | null;
+  index: number;
+};
+
+// Update the Chunk type to include all possible chunk types
 type Chunk =
   | ClientInitChunk
   | UserMessageChunk
@@ -104,22 +114,18 @@ type Chunk =
   | CodeOutputChunk
   | ArtifactUpdateChunk
   | CodeExecutionCompleteChunk
-  | CompletionChunk;
+  | CompletionChunk
+  | AssistantActionChunk;
 
 type Action = {
   id: string;
-  message?: string;
+  message: string;
+  index: number;
+  plan?: string | null;
   code?: {
     content: string;
-    blockId: string;
-    query_plan?: string;
-    artifacts?: Array<{
-      identifier: string;
-      title: string;
-      artifactType: string;
-      data: unknown[];
-    }>;
     output?: string[];
+    error?: string;
   };
 };
 
@@ -134,112 +140,133 @@ type ChunkResponse = {
   interactions: Interaction[];
 };
 
-export function accumulateChunks(chunks: Chunk[]): ChunkResponse {
+// Add new function to parse streamed response
+function parseStreamedResponse(responseLines: string[]): Chunk[] {
+  return responseLines
+    .filter((line) => line.startsWith("data: "))
+    .map((line) => {
+      const jsonStr = line.replace("data: ", "").trim();
+      return JSON.parse(jsonStr) as Chunk;
+    });
+}
+
+export function accumulateChunks(chunks: Chunk[] | string[]): ChunkResponse {
+  // If input is string array, parse it first
+  const parsedChunks: Chunk[] =
+    typeof chunks[0] === "string"
+      ? parseStreamedResponse(chunks as string[])
+      : (chunks as Chunk[]);
+
   const response: ChunkResponse = { interactions: [] };
-  let currentInteractionId: string | null = null;
+  let currentInteraction: Interaction | null = null;
   let currentAction: Action | null = null;
-  let pendingUserMessage: UserMessageChunk | null = null;
+  let currentIndex: number | null = null;
 
-  for (const chunk of chunks) {
-    // Store user message temporarily if we see it before an interaction
-    if (chunk.type === "user_message") {
-      pendingUserMessage = chunk;
+  for (const chunk of parsedChunks) {
+    // Skip chunks that are just artifact updates
+    if (chunk.type === "artifact_update_chunk") {
+      continue;
     }
 
-    if (chunk.type === "accept_interaction") {
-      currentInteractionId = chunk.interaction_id;
-      const newInteraction: Interaction = {
-        id: chunk.interaction_id,
-        threadId: chunk.thread_id,
+    // Skip non-assistant-action chunks
+    if (chunk.type !== "assistant_action_chunk") {
+      continue;
+    }
+
+    const assistantChunk = chunk as AssistantActionChunk;
+    const chunkIndex = assistantChunk.index ?? 0;
+
+    // Initialize first interaction if needed
+    if (!currentInteraction) {
+      currentInteraction = {
+        id: "default",
         actions: [],
-        chunks: [],
+        chunks: parsedChunks,
       };
-
-      // Add the pending user message if it exists
-      if (pendingUserMessage) {
-        newInteraction.chunks.push(pendingUserMessage);
-        pendingUserMessage = null;
-      }
-
-      response.interactions.push(newInteraction);
+      response.interactions.push(currentInteraction);
     }
 
-    if (currentInteractionId) {
-      const currentInteraction =
-        response.interactions[response.interactions.length - 1];
-      currentInteraction.chunks.push(chunk);
-
-      // Handle action-related chunks
-      if (chunk.type === "llm_call") {
-        currentAction = { id: chunk.assistant_action_id! };
-        currentInteraction.actions.push(currentAction);
-      }
-
-      // Update: Handle chunks even without matching action ID for filtered test cases
+    // If index changes or we don't have a current action, create a new one
+    if (currentIndex !== chunkIndex || !currentAction) {
       if (currentAction) {
-        switch (chunk.type) {
-          case "assistant_message_response":
-            if (!currentAction.message) {
-              currentAction.message = "";
-            }
-            currentAction.message += chunk.message_chunk;
-            break;
-          case "assistant_code_response":
-            if (!currentAction.code) {
-              currentAction.code = {
-                content: "",
-                blockId: chunk.code_block_id!,
-                artifacts: [],
-                output: [],
-              };
-            }
-            if (chunk.code_chunk) {
-              currentAction.code.content += chunk.code_chunk;
-            }
-            if (chunk.query_plan_chunk) {
-              currentAction.code.query_plan =
-                currentAction.code.query_plan || "";
-              currentAction.code.query_plan += chunk.query_plan_chunk;
-            }
-            break;
-          case "code_output":
-            if (currentAction.code) {
-              if (!currentAction.code.output) {
-                currentAction.code.output = [];
-              }
-              currentAction.code.output.push(chunk.output_chunk);
-            }
-            break;
+        // Remove any existing action with the same ID before adding
+        currentInteraction.actions = currentInteraction.actions.filter(
+          (a) => a.id !== currentAction!.id
+        );
+        // Only push if it has content
+        if (currentAction.message || currentAction.plan || currentAction.code) {
+          currentInteraction.actions.push(currentAction);
         }
       }
 
-      // Handle artifact updates by matching code_block_id
-      if (chunk.type === "artifact_update" && chunk.code_block_id) {
-        const actionWithCode = currentInteraction.actions.find(
-          (action) => action.code?.blockId === chunk.code_block_id
-        );
-        if (actionWithCode?.code) {
-          actionWithCode.code.artifacts = actionWithCode.code.artifacts || [];
-          actionWithCode.code.artifacts.push({
-            identifier: chunk.artifact.identifier,
-            title: chunk.artifact.title,
-            artifactType: chunk.artifact.artifact_type,
-            data: chunk.artifact.data,
-          });
-        }
-      }
+      // Check if we already have an action for this index
+      const existingAction = currentInteraction.actions.find(
+        (a) => a.index === chunkIndex
+      );
 
-      // Handle code output chunks by matching code_block_id
-      if (chunk.type === "code_output" && chunk.code_block_id) {
-        const actionWithCode = currentInteraction.actions.find(
-          (action) => action.code?.blockId === chunk.code_block_id
-        );
-        if (actionWithCode?.code) {
-          actionWithCode.code.output = actionWithCode.code.output || [];
-          actionWithCode.code.output.push(chunk.output_chunk);
+      currentAction = existingAction || {
+        id: `action_${chunkIndex}`,
+        message: "",
+        index: chunkIndex,
+      };
+      currentIndex = chunkIndex;
+    }
+
+    // Ensure currentAction is not null before using it
+    if (!currentAction) continue;
+
+    // Accumulate content
+    if (assistantChunk.message) {
+      currentAction.message =
+        (currentAction.message || "") + assistantChunk.message;
+    }
+    if (assistantChunk.plan) {
+      currentAction.plan = (currentAction.plan || "") + assistantChunk.plan;
+    }
+    if (
+      assistantChunk.code ||
+      assistantChunk.code_output ||
+      assistantChunk.code_error
+    ) {
+      if (!currentAction.code) {
+        currentAction.code = {
+          content: "",
+          output: [],
+          error: undefined,
+        };
+      }
+      if (assistantChunk.code) {
+        currentAction.code.content =
+          (currentAction.code.content || "") + assistantChunk.code;
+      }
+      if (
+        assistantChunk.code_output &&
+        !assistantChunk.code_output.includes("Stored table artifact")
+      ) {
+        // Initialize output array if needed
+        if (!currentAction.code.output) {
+          currentAction.code.output = [];
         }
+        // Always append new output chunks
+        currentAction.code.output.push(assistantChunk.code_output);
+      }
+      if (assistantChunk.code_error) {
+        currentAction.code.error =
+          (currentAction.code.error || "") + assistantChunk.code_error;
       }
     }
+  }
+
+  // Handle the final action
+  if (
+    currentAction &&
+    currentInteraction &&
+    (currentAction.message || currentAction.plan || currentAction.code)
+  ) {
+    currentInteraction.actions = currentInteraction.actions.filter(
+      (a) => a.id !== currentAction!.id
+    );
+    currentInteraction.actions.push(currentAction);
   }
 
   return response;

@@ -1,4 +1,3 @@
-// import { openai } from "@ai-sdk/openai";
 import { NextResponse } from "next/server";
 
 export const maxDuration = 30;
@@ -22,7 +21,6 @@ export async function POST(req: Request) {
       },
       assistant_actions: [],
     }));
-    console.log("Transformed interactions:", interactions);
 
     const response = await fetch("https://api.promptql.pro.hasura.io/query", {
       method: "POST",
@@ -57,8 +55,6 @@ export async function POST(req: Request) {
       );
     }
 
-    // Set up streaming response
-    const encoder = new TextEncoder();
     const stream = new ReadableStream({
       async start(controller) {
         const reader = response.body?.getReader();
@@ -70,39 +66,35 @@ export async function POST(req: Request) {
             const { done, value } = await reader.read();
             if (done) {
               console.log("Stream completed");
+              controller.enqueue({ type: "completion" });
               break;
             }
 
-            // Parse the SSE data
             const text = new TextDecoder().decode(value);
-            console.log("Received chunk:", text);
             const lines = text.split("\n");
 
             for (const line of lines) {
               if (line.startsWith("data: ")) {
-                const jsonStr = line.slice(6);
                 try {
-                  const chunk = JSON.parse(jsonStr);
-                  if (chunk.type === "assistant_action_chunk") {
-                    // Handle message chunks
-                    if (chunk.message) {
-                      controller.enqueue(encoder.encode(chunk.message));
-                    }
+                  const jsonStr = line.slice(6);
+                  const originalChunk = JSON.parse(jsonStr);
 
-                    // Handle plan chunks
-                    if (chunk.plan) {
-                      const toolCall = {
-                        type: "tool_call",
-                        tool: "plan_display",
-                        args: { plan: chunk.plan },
-                      };
-                      controller.enqueue(
-                        encoder.encode(JSON.stringify(toolCall) + "\n")
-                      );
-                    }
-                  }
-                } catch {
-                  console.warn("Failed to parse chunk:", jsonStr);
+                  // Transform into expected format
+                  const formattedChunk = {
+                    type: "assistant_message_response",
+                    assistant_action_id:
+                      originalChunk.assistant_action_id || "",
+                    message_chunk: originalChunk.message || "",
+                    plan: originalChunk.plan || "",
+                    code: originalChunk.code || "",
+                    code_output: originalChunk.code_output || "",
+                    code_error: originalChunk.code_error || "",
+                    index: originalChunk.index || 0,
+                  };
+
+                  controller.enqueue(formattedChunk);
+                } catch (e) {
+                  console.error("Error parsing chunk:", e);
                 }
               }
             }
@@ -114,10 +106,20 @@ export async function POST(req: Request) {
       },
     });
 
-    return new Response(stream, {
+    // Use TransformStream to convert objects to JSON strings
+    const jsonStream = stream.pipeThrough(
+      new TransformStream({
+        transform(chunk, controller) {
+          controller.enqueue(JSON.stringify(chunk) + "\n");
+        },
+      })
+    );
+
+    return new Response(jsonStream, {
       headers: {
-        "Content-Type": "text/plain; charset=utf-8",
-        "Transfer-Encoding": "chunked",
+        "Content-Type": "application/json",
+        "Cache-Control": "no-cache",
+        Connection: "keep-alive",
       },
     });
   } catch (error: unknown) {

@@ -1,0 +1,688 @@
+[
+  {
+    "type": "client_init",
+    "stream_llm_output": true,
+    "version": "v1",
+    "headers": {},
+    "ddn_headers": {}
+  },
+  {
+    "type": "user_message",
+    "message": "Show me information about my Snowflake Chinook schema\n\n",
+    "uploads": [],
+    "timestamp": "2025-02-19T18:55:06.443Z"
+  },
+  {
+    "type": "accept_interaction",
+    "interaction_id": "095525a1-adfa-453d-8f73-16cf37bfe15d",
+    "thread_id": "bf6475ff-4ea9-45fd-aa7c-a1c6c0ddd8b4"
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "3f05fdc7-3d60-4432-9470-60abb470f860",
+    "message_chunk": "I'll hel"
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "6da8af2d-ba80-4540-9d75-b0f94597d22b",
+    "message_chunk": "p you analyze the Chinook databas"
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "da4bdd1f-af19-4d03-9321-4fbe7239886c",
+    "message_chunk": "e schema. Let me get an ov"
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "ff02166f-47c6-4ed6-a01b-2dab23432216",
+    "message_chunk": "erview of the tabl"
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "470cb8f3-fb97-4135-be99-bd120ae70c1f",
+    "message_chunk": "es and their sizes."
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "3948c72c-a69d-4e25-be21-193acc8f1940",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "3c5be53b-fa88-4c94-964b-484484ea603e",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "b9db800c-078f-4098-939b-8e40e677c6b5",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "0337f602-ed31-4a13-8707-d5561c3e8169",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "12b19c00-4a2a-48ca-9a0d-9d60ebd31826",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "0badfeee-0618-4eed-9269-1f22af7b5f47",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "d9814d47-4585-44c2-ae35-667289f3fb44",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "c930ef6b-e085-4460-9ffc-c369065d473e",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "056f899c-cf6e-41b4-8ccc-7b219bedd321",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "be3de2ec-a94e-464d-9bd9-e5491cc999a7",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "5ad6b5d2-11cf-4d2b-9292-01a910a4f5f8",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "a9e43895-0ecc-4f6c-ad29-644460f56667",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "3aab0e57-f38b-4af7-a341-153547855227",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "b902b6bf-2a88-41d4-94f8-120c13d6b044",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "e235b30c-c8be-48ed-98bb-92b8b35d089f",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "83287d81-fbd1-49c3-9fb3-56539e5040e4",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "e6ef18f6-e231-44d0-888e-dcfe21b23018",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "05194520-5436-401c-8f95-dea2f9fea55a",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "cf930cad-9e85-48c5-8f6a-cd577ab0baf3",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "8720ebca-7b1a-4788-8aeb-d3c42c421408",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "b23f050d-9422-49a0-acbd-3c06610cd3f7",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "778a8163-4ad1-4675-a32a-898651fcdee7",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "9eaf290e-8e04-4a83-beb7-fdf6eb596eef",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "f0d39b4a-65c8-43dd-86fe-028678e10c03",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "d79b3bff-977b-4c97-8789-3d6a823df786",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "abcd85c6-b944-4ddc-8aa7-43e99417aaa7",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "96306cb4-2e56-4361-bdd4-b196566eb222",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "b60bae93-3f8f-4a25-8a63-894f0a92cb78",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "2df95c5b-5c6f-429f-b38f-a477c6435c8b",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "6030364f-ae41-4e7e-8229-52d7d0c04775",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "ec96932a-9a91-43a3-a677-db3d033753de",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "e210149d-e2ed-4d56-b260-da70a3f1649d",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "313e3d8a-bcbc-4596-ac4f-10ae0b336968",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "f7d1a2be-b167-49dd-8ae0-6d07a044c32b",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "49f08261-e399-42e8-8e3e-59e846d43f56",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "d5f7d00a-3398-43ec-93c4-2eb6c52f0f50",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "41b8d165-0be8-4bdd-a782-fca6300d65b8",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "6862d8f5-d803-410c-b217-30a9f1537090",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "969ced53-0b02-4d1c-9eb6-101f2a350362",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "2ae0c725-7937-4bf0-8324-c7e8dc3ff363",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "14016401-abc3-4a83-888a-5af6e0f9d9c1",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "1aa503cd-6ecb-468c-b7d5-a26b074f5ca0",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "afcaf273-3b2f-44a3-84eb-642d813e8daf",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "d9e2d878-0dc5-4044-a52c-cbcf61c0d9e3",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "7d306af4-16aa-4b4c-b522-8fcfaef9a919",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "65f8a78a-0b09-47e4-947b-153d1717e961",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "9e329e53-e2be-4723-9671-d86b0135c0a1",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "322fc83b-9413-4384-a670-7697e2c7cc83",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "7e5b5313-c554-49ba-9eda-3c86063b2505",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "c46786fe-72f4-4560-88cb-f3844238c65f",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "dd5b0c7a-4b6f-4c08-b7c3-2a5c14ee996d",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "5b3bd46a-6387-42da-b2ce-608816c4a445",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "96637b3a-d13d-43f7-82e4-ebe455acfd66",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "cc76bcb1-1f99-4ef5-bd62-f02f0a8fd83a",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "6dacc6b0-c20d-42db-8e4a-d4ed0c075ec1",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "caebf1fd-f18b-4dd9-a0e3-a52b51d423a1",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "c696e2ec-3cdd-423d-98af-4c115c70437a",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "141138af-5f1b-451f-88ea-368e38d3188a",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "8c56f3ed-d860-4792-b8e6-4c5462c769e4",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "34494833-93ee-4573-a3a2-398061cb77d8",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "cff17143-bb7d-4477-823d-6a4bbaca1116",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "547a6a63-9833-477e-bba1-8a522f2a559f",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "c729d735-90cb-4598-9317-7906d7ceebd2",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "ddb41801-58f6-4c47-8045-f0c05848525c",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "70eadb8f-e404-41df-b631-26fc5c97cbd8",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "95b738ce-3aaa-43f8-a77b-00ebb2ad259e",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "c3016709-12dc-4ad2-b687-96e87df4cdc3",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "b74be18f-3a3c-4c3b-9036-13754605258d",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "d097b032-76a8-4cc9-a49a-9c37359b1e51",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "54bcd660-93c1-4603-9f98-64a08e7b02c0",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "0f70f4d4-7c5e-4b7e-bb45-f299d630be8a",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "74ae52df-386f-4421-b1f7-7605f626fae3",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "3c0c8218-db5f-48a1-9cb7-afa2cc0c7c6d",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "73287a90-6df4-4b95-b9d6-bd9580358049",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "9b0dac02-2f79-462a-bf3f-dd9dacbdf3b4",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "ad4b0e4d-c109-4f94-b084-52a5397cb0d9",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "a80c1eb7-a9c1-47ac-8e16-c9436d244bd0",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "ea662a51-cbad-42a0-a0c8-033b23777bce",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "77b688ce-9731-4f3b-9603-9b668ca00705",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "a954b3c1-74c1-474a-8ccc-ba94e6aa3c02",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "13c85727-20ee-4d38-bf9d-392900de425b",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "e026888b-a459-40a0-92a4-d4cf7498e718",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "a5ac9c37-6a4f-4875-b8b7-08741112da22",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "dfe54b3c-1c59-4e66-8e71-6a17905d4191",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "78bea800-1b40-4a06-93d3-dd91c9ac07e2",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "81a925cc-9611-4907-95ce-45217472c15e",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "4ee3ab23-8ce0-4623-93a3-c140f7cd8a22",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "cf2e3097-618b-4301-bde3-185b48a2547c",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "b304eb48-ac8e-49af-8a4a-a13a12124d48",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "27b4f178-8fcf-4ffd-ab3b-105c68230f8a",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "612c3b7e-523d-4ece-8906-019269ebb592",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "536b89af-5228-4c6b-aa19-333c0098b17e",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "c304d977-5cd2-48d4-a827-16f6cd97e49e",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "26763089-8be5-4284-9657-b2ce8a6f4731",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "c1113855-561d-4658-b8c3-f92a01ae99c9",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "138adce3-d85f-4be3-95d2-86f6efaea7ba",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "65c20976-79af-461a-97ec-7583939611ab",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "fb201d1d-f641-4feb-9918-e66d56feca60",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "2e9ae893-4b92-489f-b44d-fb7ea2d810d1",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "fa582e4c-4a1a-4a84-a286-8ff6b9d2072b",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "730e485c-c8eb-4131-ad06-35f8e0ef2c5b",
+    "message_chunk": ""
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "152709aa-e00b-4ebd-9a56-eba6eeb10ab3",
+    "message_chunk": "Here'"
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "1de82b70-5a6b-4fde-864f-82666f3cf25e",
+    "message_chunk": "s an overview of your Chinoo"
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "f4d1b227-a9ef-4422-ab9c-c370e253cb86",
+    "message_chunk": "k database:\n\n1. Ta"
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "4da741fd-0187-45f2-b623-ba188aabfa49",
+    "message_chunk": "ble Sizes:\n<artifact iden"
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "a3c4e3f1-5aa3-4a04-8eb7-55c562616228",
+    "message_chunk": "tifier='table_counts' />\n\n2. The database a"
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "d4ae24d8-55ec-448a-a2a5-85661be9fc92",
+    "message_chunk": "ppears to be a musi"
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "40dac365-1448-49c8-8a77-087362611bb2",
+    "message_chunk": "c store management system with:\n- A "
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "4a02c8db-3b4b-4b93-b104-d83f86e4ae91",
+    "message_chunk": "music catalog containi"
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "3b5b99bf-8a69-417b-9ddb-44de5d4356a2",
+    "message_chunk": "ng tracks, albums, artists, and genres\n"
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "37770c8e-7de8-426d-84c7-2d8d1e40e0ed",
+    "message_chunk": "- Customer and sales information"
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "54b05c2c-1acc-4797-8249-ff3dca2b105c",
+    "message_chunk": " through invoice"
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "4f8998f4-7335-4cb3-b411-bd6c1d02efe6",
+    "message_chunk": "s\n- Employee data\n\n3. Sampl"
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "7ea7a5f4-b837-46a3-a3d3-f5038260bfa4",
+    "message_chunk": "e data shows:\n- Tracks with pricin"
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "3c27d5ce-6aa2-457e-931d-b659d02255fc",
+    "message_chunk": "g around $0.99 each\n<artifa"
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "41aead06-74ad-4293-aa1a-b4a80543f025",
+    "message_chunk": "ct identifier='sample_tracks' />\n\n4. Recent "
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "3b6088a2-42ee-40eb-8fb5-b68d1c7f14e7",
+    "message_chunk": "sales transactions:\n<art"
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "d8f10ed9-974c-4521-8a99-0b363c00ce9f",
+    "message_chunk": "ifact identifier='sample_invoices' />\n\nT"
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "d55b73a2-d7a7-4949-9a07-11e35b0eaabb",
+    "message_chunk": "he schema follows a typ"
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "d8daab0f-ebc4-4195-81e2-825ece258960",
+    "message_chunk": "ical music store structure w"
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "325bb67b-9f48-462c-bb52-c0786660cf54",
+    "message_chunk": "here:\n- Tracks belong to Albu"
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "eccb3bca-3a2b-4010-9b17-a8d190850728",
+    "message_chunk": "ms, which are created by Arti"
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "f677f86a-9da6-4d64-be1b-3f86c53859c7",
+    "message_chunk": "sts\n- Customers make purchases through Invoices"
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "27de2da1-4e00-49e1-aa6e-b98f173fd781",
+    "message_chunk": "\n- Each Invoice contains multiple In"
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "0c04440a-558b-4176-8960-0671f3608ff1",
+    "message_chunk": "voice Lines (individual track purchases)"
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "08bdd1d5-631c-4b92-89db-2e53a44af453",
+    "message_chunk": "\n- Tracks are categorized by Genre and Med"
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "9576eb1d-c1dd-446c-acf4-df14625d3ac6",
+    "message_chunk": "ia Type\n\nWould you like to explore any p"
+  },
+  {
+    "type": "assistant_message_response",
+    "assistant_action_id": "34db9528-a8a6-4192-a967-52c7ce523ae0",
+    "message_chunk": "articular aspect of this database in more detail?"
+  },
+  {
+    "type": "completion"
+  }
+]

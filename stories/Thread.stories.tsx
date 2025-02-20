@@ -1,13 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Thread } from "@assistant-ui/react-ui";
 import { MockRuntimeProvider } from "../app/components/MockRuntimeProvider";
-import promptQLChunks from "../app/promptql-chunks.json";
 import "../app/globals.css";
-import "@radix-ui/themes/styles.css";
-import { Theme } from "@radix-ui/themes";
-import type { Chunk } from "../app/accumulateChunks";
 import { PlanToolUI } from "../app/components/PlanToolUI";
 import { CodeToolUI } from "../app/components/CodeToolUI";
+import promptQLResponse from "../test/mocks/promptql-response.json";
 
 const meta = {
   title: "Components/Thread",
@@ -17,13 +14,11 @@ const meta = {
   },
   decorators: [
     (Story) => (
-      <div className="h-screen bg-white">
+      <div className="h-screen">
         <MockRuntimeProvider>
-          <Theme>
-            <main className="h-full">
-              <Story />
-            </main>
-          </Theme>
+          <main className="h-full">
+            <Story />
+          </main>
         </MockRuntimeProvider>
       </div>
     ),
@@ -36,13 +31,11 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   decorators: [
     (Story) => (
-      <div className="h-screen bg-white">
-        <MockRuntimeProvider sampleChunks={promptQLChunks as Chunk[]}>
-          <Theme>
-            <main className="h-full">
-              <Story />
-            </main>
-          </Theme>
+      <div className="h-screen">
+        <MockRuntimeProvider sampleChunks={promptQLResponse}>
+          <main className="h-full">
+            <Story />
+          </main>
         </MockRuntimeProvider>
       </div>
     ),

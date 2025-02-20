@@ -3,8 +3,6 @@ import { Inter } from "next/font/google";
 import { MyRuntimeProvider } from "@/app/MyRuntimeProvider";
 
 import "./globals.css";
-import "@radix-ui/themes/styles.css";
-import { Theme } from "@radix-ui/themes";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,12 +17,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <MyRuntimeProvider>
-      <Theme>
-        <html lang="en" className="h-full">
-          <body className={`${inter.className} h-full`}>{children}</body>
-        </html>
-      </Theme>
-    </MyRuntimeProvider>
+    <html lang="en" className="h-screen">
+      <body className={`${inter.className} h-screen`}>
+        <MyRuntimeProvider>{children}</MyRuntimeProvider>
+      </body>
+    </html>
   );
 }

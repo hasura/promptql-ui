@@ -7,60 +7,34 @@ import {
   AppendMessage,
 } from "@assistant-ui/react";
 import { useState } from "react";
-import { accumulateChunks, type Chunk } from "../accumulateChunks";
-import { convertPromptQLToAssistantUI } from "../convertPromptQLToAssistantUI";
-import promptQLChunks from "../promptql-chunks.json";
+import { processNewMessage } from "../utils/messageProcessing";
 
 interface MockRuntimeProviderProps {
   children: React.ReactNode;
   initialMessages?: ThreadMessageLike[];
-  sampleChunks?: Chunk[];
+  sampleChunks?: string[];
 }
 
 export function MockRuntimeProvider({
   children,
   initialMessages = [],
-  sampleChunks = promptQLChunks as Chunk[],
+  sampleChunks = [],
 }: MockRuntimeProviderProps) {
   const [messages, setMessages] =
     useState<readonly ThreadMessageLike[]>(initialMessages);
 
   const onNew = async (message: AppendMessage) => {
-    if (message.content.length !== 1 || message.content[0]?.type !== "text")
-      throw new Error("Only text content is supported");
+    const getChunks = () =>
+      Promise.resolve(
+        (async function* () {
+          for (const chunk of sampleChunks) {
+            await new Promise((resolve) => setTimeout(resolve, 100));
+            yield chunk;
+          }
+        })()
+      );
 
-    const userMessage: ThreadMessageLike = {
-      role: "user",
-      content: [{ type: "text", text: message.content[0].text }],
-    };
-
-    // Add user message first
-    setMessages((msgs) => [...msgs, userMessage]);
-
-    // Create initial assistant message
-    const initialAssistantMessage: ThreadMessageLike = {
-      role: "assistant",
-      content: [],
-    };
-    setMessages((msgs) => [...msgs, initialAssistantMessage]);
-
-    // Process chunks with delay to simulate streaming
-    const processedChunks: Chunk[] = [];
-    for (const chunk of sampleChunks) {
-      await new Promise((resolve) => setTimeout(resolve, 300));
-      processedChunks.push(chunk);
-
-      const accumulated = accumulateChunks(processedChunks);
-      const newMessages = convertPromptQLToAssistantUI(accumulated);
-
-      // Update all messages after the user message
-      if (newMessages.length > 1) {
-        setMessages((msgs) => [
-          ...msgs.slice(0, -newMessages.length + 1),
-          ...newMessages.slice(1),
-        ]);
-      }
-    }
+    await processNewMessage(message, { messages, setMessages }, getChunks);
   };
 
   const runtime = useExternalStoreRuntime<ThreadMessageLike>({
