@@ -42,5 +42,9 @@ export const Default: Story = {
   ],
   args: {
     tools: [PlanToolUI, CodeToolUI],
+    assistantAvatar: {
+      src: "/promptql.svg",
+      alt: "PromptQL Logo",
+    },
   },
 };

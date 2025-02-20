@@ -7,7 +7,13 @@ import { PlanToolUI } from "./components/PlanToolUI";
 export default function Home() {
   return (
     <main className="h-screen">
-      <Thread tools={[PlanToolUI, CodeToolUI]} />
+      <Thread
+        tools={[PlanToolUI, CodeToolUI]}
+        assistantAvatar={{
+          src: "/promptql.svg",
+          alt: "PromptQL Logo",
+        }}
+      />
     </main>
   );
 }
