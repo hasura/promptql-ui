@@ -26,6 +26,7 @@ export async function POST(req: Request) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "x-hasura-ddn-token": process.env.DDN_TOKEN!,
       },
       body: JSON.stringify({
         version: "v1",
@@ -35,7 +36,9 @@ export async function POST(req: Request) {
         },
         ddn: {
           url: DDN_URL,
-          headers: {},
+          headers: {
+            "x-hasura-ddn-token": process.env.DDN_TOKEN!,
+          },
         },
         artifacts: [],
         system_instructions: "",
@@ -47,7 +50,7 @@ export async function POST(req: Request) {
 
     if (!response.ok) {
       const errorData = await response.json().catch(() => null);
-      console.log(errorData);
+      console.log(JSON.stringify(errorData));
       throw new Error(
         `PromptQL API request failed with status ${response.status}: ${
           errorData ? JSON.stringify(errorData) : response.statusText
