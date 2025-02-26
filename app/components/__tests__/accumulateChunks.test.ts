@@ -1,10 +1,6 @@
 import { describe, it, expect } from "vitest";
 import promptQLResponse from "../../../test/mocks/promptql-response.json";
-import {
-  accumulateChunks,
-  AssistantActionChunk,
-  ChunkResponse,
-} from "../../accumulateChunks";
+import { accumulateChunks, ChunkResponse } from "../../accumulateChunks";
 import { createChunkStream, collectStreamedChunks } from "./testUtils";
 
 describe("accumulateChunks", () => {

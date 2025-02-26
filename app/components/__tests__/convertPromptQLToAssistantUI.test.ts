@@ -55,6 +55,22 @@ describe("convertPromptQLToAssistantUI", () => {
     expect(codeContent.args.code).toContain("# Get row counts");
     expect(codeContent.args.output).toContain("SQL statement returned 1 rows");
   });
+
+  it("should include artifact reference with warning message", () => {
+    const accumulated = accumulateChunks(promptQLResponse);
+    const messages = convertPromptQLToAssistantUI(accumulated);
+    // console.log(JSON.stringify(messages, null, 2));
+
+    // Get the second message (index 1) which contains the artifact reference
+    const artifactMessage = messages[1].content[0] as TextContentPart;
+    expect(artifactMessage.type).toBe("text");
+    expect(artifactMessage.text).toContain(
+      "<artifact identifier='schema_overview'"
+    );
+    expect(artifactMessage.text).toContain(
+      "warning='I cannot see the full data so I must not make up observations'"
+    );
+  });
 });
 
 describe("convertPromptQLToAssistantUI streaming", () => {

@@ -2,9 +2,9 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Thread } from "@assistant-ui/react-ui";
 import { MockRuntimeProvider } from "../app/components/MockRuntimeProvider";
 import "../app/globals.css";
-import { PlanToolUI } from "../app/components/PlanToolUI";
-import { CodeToolUI } from "../app/components/CodeToolUI";
 import promptQLResponse from "../test/mocks/promptql-response.json";
+import { SimplePlanToolUI } from "../app/components/SimplePlanToolUI";
+import { SimpleCodeToolUI } from "../app/components/SimpleCodeToolUI";
 
 const meta = {
   title: "Components/Thread",
@@ -41,8 +41,7 @@ export const Default: Story = {
     ),
   ],
   args: {
-    // Disable tools for now
-    // tools: [PlanToolUI, CodeToolUI],
+    tools: [SimplePlanToolUI, SimpleCodeToolUI],
     assistantAvatar: {
       src: "/promptql.svg",
       alt: "PromptQL Logo",

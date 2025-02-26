@@ -1,15 +1,14 @@
 "use client";
 
 import { Thread } from "@assistant-ui/react-ui";
-import { CodeToolUI } from "./components/CodeToolUI";
-import { PlanToolUI } from "./components/PlanToolUI";
+import { SimplePlanToolUI } from "./components/SimplePlanToolUI";
+import { SimpleCodeToolUI } from "./components/SimpleCodeToolUI";
 
 export default function Home() {
   return (
     <main className="h-screen">
       <Thread
-        // Disable tools for now
-        // tools={[PlanToolUI, CodeToolUI]}
+        tools={[SimplePlanToolUI, SimpleCodeToolUI]}
         assistantAvatar={{
           src: "/promptql.svg",
           alt: "PromptQL Logo",
