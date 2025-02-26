@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { MyRuntimeProvider } from "@/app/MyRuntimeProvider";
+import { LocalRuntimeProvider } from "@/app/components/LocalRuntimeProvider";
 
 import "./globals.css";
 
@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-screen">
       <body className={`${inter.className} h-screen`}>
-        <MyRuntimeProvider>{children}</MyRuntimeProvider>
+        <LocalRuntimeProvider>{children}</LocalRuntimeProvider>
       </body>
     </html>
   );
