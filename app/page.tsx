@@ -8,7 +8,8 @@ export default function Home() {
   return (
     <main className="h-screen">
       <Thread
-        tools={[PlanToolUI, CodeToolUI]}
+        // Disable tools for now
+        // tools={[PlanToolUI, CodeToolUI]}
         assistantAvatar={{
           src: "/promptql.svg",
           alt: "PromptQL Logo",
