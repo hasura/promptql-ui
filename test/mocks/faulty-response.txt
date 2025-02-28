@@ -1,0 +1,354 @@
+data: {"message":"I'll help you find ","plan":null,"code":null,"code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":"companies focused on oncology by looking at","plan":null,"code":null,"code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":" their products, indications,","plan":null,"code":null,"code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":" and classification","plan":null,"code":null,"code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":"s. Let me break t","plan":null,"code":null,"code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":"his down into steps.","plan":null,"code":null,"code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":"1. Search for companies","code":null,"code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":" that have products linked to oncolo","code":null,"code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":"gy-related indications\n2. Include companies whe","code":null,"code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":"re the indication name or classi","code":null,"code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":"fication directly mentions on","code":null,"code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":"cology/cancer\n3. For each company found:\n","code":null,"code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":"   - Get their basic company information\n   - Get","code":null,"code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":" their latest market data if avail","code":null,"code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":"able\n   - Check if they have any ","code":null,"code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":"active positions\n4. Sort results by market cap to show the most significant companies first","code":null,"code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"# Fir","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"st get companies throu","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"gh oncology indicati","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"ons\nsql = \"\"\"\nSELECT DISTI","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"NCT\n    c.id","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":" as company_id,\n    c.name as c","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"ompany_name,\n    i.nam","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"e as indication","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"_name,\n    c.privat","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"e as is_private\nFROM ","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"\n    app.RmsQaCompany c\n    ","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"JOIN app.RmsQaProductCo","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"mpany pc ON c.id = pc.companyI","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"d\n    JOIN app.RmsQaP","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"roduct p ON pc.productId ","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"= p.id\n    JOIN app.RmsQaMi","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"lestoneProduct m","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"p ON p.id = mp.productId\n    JOI","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"N app.RmsQaMilestoneIndi","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"cation mi ON mp.milestoneI","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"d = mi.milestoneId\n    JO","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"IN app.RmsQaIndication i ","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"ON mi.indicationId = i.i","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"d\nWHERE \n    LOWER(i.","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"name) LIKE '%oncology%'\n ","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"   OR LOWER(i.name) LI","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"KE '%cancer%'\n    OR ","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"LOWER(i.name) LIKE ","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"'%tumor%'\n    OR LOWER(i.name","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":") LIKE '%","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"carcinoma%'\n\"\"\"\ncompanies = e","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"xecutor.run_sql(sql)\nexecutor.print(f\"Found {len(com","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"panies)} companies through oncology ind","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"ications\")\n\n# Get market da","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"ta for these companies\ncompany_ids = l","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"ist(set(str(c['company_id'])","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":" for c in companies","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"))\nif company_ids:","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"\n    company_ids_str = ','.join(company_id","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"s)\n    \n    # Get latest finan","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"cial data\n    sql = f\"\"\"\n    S","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"ELECT \n        companyId,\n       ","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":" marketCapInUsd,\n        ","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"lastTradeInUsd\n    FROM \n        app.","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"RmsQaCompanyDashboard\n    WHE","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"RE \n        companyId IN ({company_ids_str","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"})\n    \"\"\"\n    financials = executo","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"r.run_sql(sql)\n    \n    # Create financ","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"ial lookup\n    financial_lookup = {","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"}\n    for f in financials:\n        if f['companyId'] not ","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"in financial_lookup:","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"\n            financial_lookup[f['company","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"Id']] = {\n                'market_","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"cap': f['marketCapInUsd'","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"],\n                'last_trade': f['l","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"astTradeInUsd']\n            }\n\n","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"    # Get position data\n    sql = ","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"f\"\"\"\n    SELECT \n        companyId,","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"\n        COUNT(1) as position_cou","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"nt,\n        SUM(shares) as tota","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"l_shares\n    FROM \n        app.RmsQaP","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"osition\n    WHERE \n     ","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"   companyId IN ({company_ids_s","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"tr})\n    GROUP BY \n        compan","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"yId\n    \"\"\"\n    positions = executo","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"r.run_sql(sql)\n    positio","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"n_lookup = {p['companyId']: p ","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"for p in positions}\n\n    # Fo","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"rmat results\n    oncology_companies = []\n    seen_co","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"mpanies = set()\n    \n    for company in","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":" companies:\n        company_id = co","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"mpany['company_id']\n        if company_id in ","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"seen_companies:\n            continue","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"\n            \n        seen_comp","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"anies.add(company_id)\n        \n     ","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"   financial_data = financial_lookup.get(","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"company_id, {})\n        po","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"sition_data = position_lookup.get(company","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"_id, {})\n        \n        marke","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"t_cap = financial_data.get('market_cap')\n        ","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"\n        oncology_companies.appen","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"d({\n            'Company Name': company['compan","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"y_name'],\n       ","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"     'Private","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"': 'Yes' if company['is_privat","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"e'] == 'Y' else '","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"No',\n            'Market C","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"ap': f\"${market_cap/1e9:.1f}B\" ","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"if market_cap else 'N/A',\n ","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"           'Las","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"t Trade': f\"${finan","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"cial_data.get('last_t","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"rade', 0):.2f}\" if financia","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"l_data.get('last_trade') else '","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"N/A',\n            'Positio","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"n Count': position_data.get('p","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"osition_count', 0),\n            '","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"Total Shares': f\"{positi","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"on_data.get('total_shares', 0)","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":":,.0f}\" if position_data","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":".get('total_shares') else '0',\n   ","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"         'Focus Area': company['i","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"ndication_name']\n        })\n\n    # Sort b","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"y market cap (descending)\n    oncolog","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"y_companies.sort(\n        ","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"key=lambda x: float(x['Market Cap'].","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"replace('$','').rep","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"lace('B','')) if x['Market C","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"ap'] != 'N/A' else 0, \n        reverse=True\n    )","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"\n\n    # Store results\n    executor.store_","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"artifact(\n        'oncology_c","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"ompanies',\n        'Companies Focuse","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"d on Oncology',\n        'table',\n    ","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"    oncology_companies\n    )\n\n    # Print summary st","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"atistics\n    executor.print(\"\\","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"nSummary Statistics:\")\n    executor.print","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"(f\"Total oncology companies found: {len(","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"oncology_companies)}\")\n    pub","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"lic_companies = sum(1 for c in","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":" oncology_companies if c['Private","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"'] == 'No')\n    executor.print(f\"Pub","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"lic companies: {public_companies","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"}\")\n    executor.print(f\"Private companie","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"s: {len(oncology_companies) - p","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"ublic_companies}\")\n    co","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"mpanies_with_positions = sum(1 for c in on","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"cology_companies if int(c['Position ","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"Count']) > 0)\n    executor.print(f\"Compa","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":"nies with positions: {companies_with_positions}\")","code_output":null,"code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":null,"code_output":"SQL statement returned 84 rows.\n","code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":null,"code_output":"Found 84 companies through oncology indications\n","code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":null,"code_output":"SQL statement returned 39 rows.\n","code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":null,"code_output":"SQL statement returned 21 rows.\n","code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"type":"artifact_update_chunk","artifact":{"identifier":"oncology_companies","title":"Companies Focused on Oncology","artifact_type":"table","data":[{"Company Name":"Eli Lilly","Private":"No","Market Cap":"$873.6B","Last Trade":"$923.14","Position Count":0,"Total Shares":"0","Focus Area":"Breast Cancer"},{"Company Name":"NOVO NORDISK AS","Private":"No","Market Cap":"$399.3B","Last Trade":"$89.62","Position Count":2,"Total Shares":"216,989","Focus Area":"Head and Neck Cancer"},{"Company Name":"Johnson & Johnson","Private":"No","Market Cap":"$397.7B","Last Trade":"$162.96","Position Count":0,"Total Shares":"0","Focus Area":"Prostate Cancer"},{"Company Name":"Roche AG","Private":"No","Market Cap":"$270.3B","Last Trade":"$302.88","Position Count":9,"Total Shares":"12,511,469","Focus Area":"Bladder Cancer"},{"Company Name":"AstraZeneca","Private":"No","Market Cap":"$237.2B","Last Trade":"$75.94","Position Count":0,"Total Shares":"0","Focus Area":"Breast Cancer"},{"Company Name":"Pfizer","Private":"No","Market Cap":"$147.8B","Last Trade":"$26.16","Position Count":0,"Total Shares":"0","Focus Area":"Prostate Cancer"},{"Company Name":"Sanofi","Private":"No","Market Cap":"$136.4B","Last Trade":"$54.55","Position Count":0,"Total Shares":"0","Focus Area":"solid tumors"},{"Company Name":"Bristol-Myers Squibb","Private":"No","Market Cap":"$118.2B","Last Trade":"$58.34","Position Count":0,"Total Shares":"0","Focus Area":"Bladder Cancer"},{"Company Name":"GSK","Private":"No","Market Cap":"$77.2B","Last Trade":"$37.32","Position Count":1,"Total Shares":"2,000,000","Focus Area":"Ovarian Cancer"},{"Company Name":"Daiichi Sankyo Co Ltd","Private":"No","Market Cap":"$45.5B","Last Trade":"$32.15","Position Count":3,"Total Shares":"700,063","Focus Area":"Breast Cancer"},{"Company Name":"Corcept","Private":"No","Market Cap":"$7.0B","Last Trade":"$62.55","Position Count":0,"Total Shares":"0","Focus Area":"Ovarian Cancer"},{"Company Name":"Lantheus Holdings","Private":"No","Market Cap":"$7.0B","Last Trade":"$92.32","Position Count":2,"Total Shares":"32,687","Focus Area":"Prostate Cancer"},{"Company Name":"ImmunityBio","Private":"No","Market Cap":"$2.7B","Last Trade":"$3.06","Position Count":4,"Total Shares":"883,420","Focus Area":"Pancreatic Cancer"},{"Company Name":"Dynavax","Private":"No","Market Cap":"$2.1B","Last Trade":"$13.81","Position Count":3,"Total Shares":"2,903,412","Focus Area":"cholangiocarcinoma"},{"Company Name":"Syndax","Private":"No","Market Cap":"$1.6B","Last Trade":"$15.85","Position Count":1,"Total Shares":"1,500,000","Focus Area":"HR+ breast cancer"},{"Company Name":"Arvinas","Private":"No","Market Cap":"$1.4B","Last Trade":"$17.77","Position Count":3,"Total Shares":"299,136","Focus Area":"Prostate Cancer"},{"Company Name":"Karyopharm","Private":"No","Market Cap":"$1.2B","Last Trade":"$10.01","Position Count":1,"Total Shares":"5,360,689","Focus Area":"endometrial cancer"},{"Company Name":"Crescent (fka GlycoMimetics)","Private":"No","Market Cap":"$0.7B","Last Trade":"$0.29","Position Count":1,"Total Shares":"4,094,383","Focus Area":"HR+ breast cancer"},{"Company Name":"G1 Therapeutics","Private":"No","Market Cap":"$0.4B","Last Trade":"$7.15","Position Count":4,"Total Shares":"165,695","Focus Area":"Bladder Cancer"},{"Company Name":"Cardiff Oncology","Private":"No","Market Cap":"$0.3B","Last Trade":"$4.29","Position Count":2,"Total Shares":"211,370","Focus Area":"Colorectal Cancer"},{"Company Name":"Silverback","Private":"No","Market Cap":"$0.3B","Last Trade":"$8.46","Position Count":3,"Total Shares":"290,919","Focus Area":"Solid tumor"},{"Company Name":"Fate Therapeutics","Private":"No","Market Cap":"$0.2B","Last Trade":"$1.17","Position Count":4,"Total Shares":"1,641,799","Focus Area":"EGFR+ solid tumors"},{"Company Name":"Innate Pharma","Private":"No","Market Cap":"$0.2B","Last Trade":"$2.60","Position Count":0,"Total Shares":"0","Focus Area":"Head and Neck Cancer"},{"Company Name":"Veru","Private":"No","Market Cap":"$0.1B","Last Trade":"$0.54","Position Count":1,"Total Shares":"3,866,062","Focus Area":"Breast Cancer"},{"Company Name":"BioXcel Therapeutics","Private":"No","Market Cap":"$0.1B","Last Trade":"$1.83","Position Count":2,"Total Shares":"395,960","Focus Area":"Solid tumor"},{"Company Name":"Immunomedics","Private":"No","Market Cap":"N/A","Last Trade":"N/A","Position Count":0,"Total Shares":"0","Focus Area":"Bladder Cancer"},{"Company Name":"AvenCell","Private":"No","Market Cap":"N/A","Last Trade":"N/A","Position Count":0,"Total Shares":"0","Focus Area":"Breast Cancer"},{"Company Name":"eFFECTOR Therapeutics","Private":"No","Market Cap":"$0.0B","Last Trade":"$0.00","Position Count":0,"Total Shares":"0","Focus Area":"Breast Cancer"},{"Company Name":"NOVARTIS AG ADS","Private":"No","Market Cap":"N/A","Last Trade":"N/A","Position Count":0,"Total Shares":"0","Focus Area":"Breast Cancer"},{"Company Name":"Circio","Private":"No","Market Cap":"$0.0B","Last Trade":"$0.08","Position Count":0,"Total Shares":"0","Focus Area":"Colorectal Cancer"},{"Company Name":"Medigene","Private":"No","Market Cap":"$0.0B","Last Trade":"$2.00","Position Count":0,"Total Shares":"0","Focus Area":"gastric cancer"},{"Company Name":"Ultimovacs","Private":"No","Market Cap":"N/A","Last Trade":"N/A","Position Count":0,"Total Shares":"0","Focus Area":"Head and Neck Cancer"},{"Company Name":"Takeda","Private":"No","Market Cap":"N/A","Last Trade":"N/A","Position Count":0,"Total Shares":"0","Focus Area":"HR+ breast cancer"},{"Company Name":"IMV Inc","Private":"No","Market Cap":"$0.0B","Last Trade":"$0.00","Position Count":0,"Total Shares":"0","Focus Area":"Ovarian Cancer"},{"Company Name":"Clovis Oncology","Private":"No","Market Cap":"$0.0B","Last Trade":"$0.06","Position Count":2,"Total Shares":"266,861","Focus Area":"Ovarian Cancer"},{"Company Name":"Generic","Private":"No","Market Cap":"N/A","Last Trade":"N/A","Position Count":0,"Total Shares":"0","Focus Area":"Ovarian Cancer"},{"Company Name":"Erytech","Private":"No","Market Cap":"$0.0B","Last Trade":"$2.25","Position Count":2,"Total Shares":"252,496","Focus Area":"Pancreatic Cancer"},{"Company Name":"LadRx","Private":"No","Market Cap":"$0.0B","Last Trade":"$2.04","Position Count":0,"Total Shares":"0","Focus Area":"Pancreatic Cancer"},{"Company Name":"Constellation Pharmaceuticals","Private":"No","Market Cap":"N/A","Last Trade":"N/A","Position Count":4,"Total Shares":"634,200","Focus Area":"Prostate Cancer"},{"Company Name":"Astellas","Private":"No","Market Cap":"N/A","Last Trade":"$9.80","Position Count":0,"Total Shares":"0","Focus Area":"Prostate Cancer"},{"Company Name":"Aprea","Private":"No","Market Cap":"$0.0B","Last Trade":"$2.58","Position Count":0,"Total Shares":"0","Focus Area":"solid tumors"},{"Company Name":"Rubius Therapeutics","Private":"No","Market Cap":"$0.0B","Last Trade":"$0.06","Position Count":4,"Total Shares":"2,185,957","Focus Area":"solid tumors"},{"Company Name":"Novalgen","Private":"No","Market Cap":"N/A","Last Trade":"N/A","Position Count":0,"Total Shares":"0","Focus Area":"solid tumors"}]}}
+
+data: {"message":null,"plan":null,"code":null,"code_output":"Stored table artifact: identifier = 'oncology_companies', title = 'Companies Focused on Oncology', number of rows = 43, sample rows = [{'Company Name': 'Eli Lilly', 'Private': 'No', 'Market Cap': '$873.6B', 'Last Trade': '$923.14', 'Position Count': 0, 'Total Shares': '0', 'Focus Area': 'Breast Cancer'}, {'Company Name': 'NOVO NORDISK AS', 'Private': 'No', 'Market Cap': '$399.3B', 'Last Trade': '$89.62', 'Position Count': 2, 'Total Shares': '216,989', 'Focus Area': 'Head and Neck Cancer'}]\n","code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":null,"code_output":"\nSummary Statistics:\n","code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":null,"code_output":"Total oncology companies found: 43\n","code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":null,"code_output":"Public companies: 43\n","code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":null,"code_output":"Private companies: 0\n","code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":null,"plan":null,"code":null,"code_output":"Companies with positions: 21\n","code_error":null,"type":"assistant_action_chunk","index":0}
+
+data: {"message":"Here are the companies focused on onc","plan":null,"code":null,"code_output":null,"code_error":null,"type":"assistant_action_chunk","index":1}
+
+data: {"message":"ology, sorted by market capitali","plan":null,"code":null,"code_output":null,"code_error":null,"type":"assistant_action_chunk","index":1}
+
+data: {"message":"zation:\n<artifact identifier='oncolo","plan":null,"code":null,"code_output":null,"code_error":null,"type":"assistant_action_chunk","index":1}
+
+data: {"message":"gy_companies' warning='I cannot see","plan":null,"code":null,"code_output":null,"code_error":null,"type":"assistant_action_chunk","index":1}
+
+data: {"message":" the full data so I m","plan":null,"code":null,"code_output":null,"code_error":null,"type":"assistant_action_chunk","index":1}
+
+data: {"message":"ust not make up observations' ","plan":null,"code":null,"code_output":null,"code_error":null,"type":"assistant_action_chunk","index":1}
+
+data: {"message":"/>\n\nThe data shows:\n- 43 public","plan":null,"code":null,"code_output":null,"code_error":null,"type":"assistant_action_chunk","index":1}
+
+data: {"message":" companies working in oncology-related ar","plan":null,"code":null,"code_output":null,"code_error":null,"type":"assistant_action_chunk","index":1}
+
+data: {"message":"eas\n- 21 of these companies are in","plan":null,"code":null,"code_output":null,"code_error":null,"type":"assistant_action_chunk","index":1}
+
+data: {"message":" our investment portfolio\n- The","plan":null,"code":null,"code_output":null,"code_error":null,"type":"assistant_action_chunk","index":1}
+
+data: {"message":" largest c","plan":null,"code":null,"code_output":null,"code_error":null,"type":"assistant_action_chunk","index":1}
+
+data: {"message":"ompanies by market cap a","plan":null,"code":null,"code_output":null,"code_error":null,"type":"assistant_action_chunk","index":1}
+
+data: {"message":"re Eli Lilly ($873.6","plan":null,"code":null,"code_output":null,"code_error":null,"type":"assistant_action_chunk","index":1}
+
+data: {"message":"B) and Novo Nordisk ($399.3B)\n","plan":null,"code":null,"code_output":null,"code_error":null,"type":"assistant_action_chunk","index":1}
+
+data: {"message":"\nWould you like to:\n1. See more details about an","plan":null,"code":null,"code_output":null,"code_error":null,"type":"assistant_action_chunk","index":1}
+
+data: {"message":"y specific company's oncology programs?\n2.","plan":null,"code":null,"code_output":null,"code_error":null,"type":"assistant_action_chunk","index":1}
+
+data: {"message":" Filter these companies by ","plan":null,"code":null,"code_output":null,"code_error":null,"type":"assistant_action_chunk","index":1}
+
+data: {"message":"specific cancer types?\n3. Focus o","plan":null,"code":null,"code_output":null,"code_error":null,"type":"assistant_action_chunk","index":1}
+
+data: {"message":"nly on companies where we have positions?\n4. Look at rec","plan":null,"code":null,"code_output":null,"code_error":null,"type":"assistant_action_chunk","index":1}
+
+data: {"message":"e","plan":null,"code":null,"code_output":null,"code_error":null,"type":"assistant_action_chunk","index":1}
+
+data: {"message":"nt clinical trial milestones for these companies?","plan":null,"code":null,"code_output":null,"code_error":null,"type":"assistant_action_chunk","index":1}
+

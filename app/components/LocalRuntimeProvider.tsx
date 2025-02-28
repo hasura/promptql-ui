@@ -4,15 +4,19 @@ import {
   AssistantRuntimeProvider,
   useLocalRuntime,
   type ChatModelAdapter,
-  type ChatModelRunResult,
 } from "@assistant-ui/react";
 import { ReactNode } from "react";
+import {
+  accumulatePromptQLContent,
+  convertToAssistantContent,
+  type PromptQLContent,
+} from "../utils/contentProcessor";
 
 interface LocalRuntimeProviderProps {
   children: ReactNode;
 }
 
-const createModelAdapter = (): ChatModelAdapter => ({
+const createPromptQLAdapter = (): ChatModelAdapter => ({
   async *run({ messages, abortSignal }) {
     const response = await fetch("/api/chat", {
       method: "POST",
@@ -36,115 +40,72 @@ const createModelAdapter = (): ChatModelAdapter => ({
 
     const reader = response.body.getReader();
     const decoder = new TextDecoder();
-
-    // Track content by index
-    const contentByIndex: Record<
-      number,
-      {
-        text: string;
-        plan: string;
-        code: string;
-        codeOutput: string;
-      }
-    > = {};
-
+    const contentByIndex: Record<number, PromptQLContent> = {};
     let buffer = "";
+
     while (true) {
       const { done, value } = await reader.read();
       if (done) break;
 
-      buffer += decoder.decode(value, { stream: true });
+      const chunk = decoder.decode(value, { stream: true });
+      buffer += chunk;
+
+      // Split by newlines while preserving any partial line at the end
       const lines = buffer.split("\n");
-      buffer = lines.pop() || "";
+      buffer = lines.pop() || ""; // Keep the last partial line in the buffer
 
       for (const line of lines) {
-        if (line.trim()) {
-          try {
-            const chunk = JSON.parse(line);
-            if (chunk.type === "assistant_message_response") {
-              const data = {
-                message: chunk.message_chunk || "",
-                type: "assistant_action_chunk",
-                plan: chunk.plan || "",
-                code: chunk.code || "",
-                code_output: chunk.code_output || "",
-                code_error: chunk.code_error || "",
-                index: chunk.index || 0,
-              };
+        if (!line.trim() || !line.startsWith("data: ")) continue;
 
-              const index = data.index;
+        const jsonLine = line.replace("data: ", "").trim();
+        try {
+          const data = JSON.parse(jsonLine);
+          const allContent = accumulatePromptQLContent(contentByIndex, data);
+          const assistantContent = convertToAssistantContent(allContent);
 
-              // Initialize content for this index if needed
-              if (!contentByIndex[index]) {
-                contentByIndex[index] = {
-                  text: "",
-                  plan: "",
-                  code: "",
-                  codeOutput: "",
-                };
-              }
-
-              // Accumulate different content types for this index
-              if (data.message) contentByIndex[index].text += data.message;
-              if (data.plan) contentByIndex[index].plan += data.plan;
-              if (data.code) contentByIndex[index].code += data.code;
-              if (data.code_output)
-                contentByIndex[index].codeOutput += data.code_output;
-
-              // Create content array for all messages up to and including current index
-              const allContent: ChatModelRunResult["content"] = Object.entries(
-                contentByIndex
-              )
-                .sort(([a], [b]) => Number(a) - Number(b))
-                .flatMap(([, content]) => [
-                  ...(content.text
-                    ? [{ type: "text" as const, text: content.text }]
-                    : []),
-                  ...(content.plan
-                    ? [
-                        {
-                          type: "tool-call" as const,
-                          toolCallId: "plan-1",
-                          toolName: "plan_display",
-                          args: {
-                            plan: content.plan,
-                            code: null,
-                            codeOutput: null,
-                          } as const,
-                          argsText: content.plan,
-                        },
-                      ]
-                    : []),
-                  ...(content.code
-                    ? [
-                        {
-                          type: "tool-call" as const,
-                          toolCallId: "code-1",
-                          toolName: "code_display",
-                          args: {
-                            code: content.code,
-                            codeOutput: content.codeOutput,
-                            plan: null,
-                          } as const,
-                          argsText: `${content.code}\n${content.codeOutput}`,
-                        },
-                      ]
-                    : []),
-                ]);
-
-              yield { content: allContent };
+          if (data.type === "artifact_update_chunk" && data.artifact) {
+            if (data.type === "artifact_update_chunk") {
+              console.log(data);
             }
-          } catch (error) {
-            console.warn("Failed to parse line:", line, error);
+            yield {
+              content: assistantContent,
+              artifact: data.artifact,
+            };
+          } else {
+            yield { content: assistantContent };
           }
+        } catch (e) {
+          console.error("Error processing chunk:", e);
         }
+      }
+    }
+
+    // Process any remaining data in the buffer
+    if (buffer.trim() && buffer.startsWith("data: ")) {
+      try {
+        const jsonLine = buffer.replace("data: ", "").trim();
+        console.log(jsonLine);
+        const data = JSON.parse(jsonLine);
+        const allContent = accumulatePromptQLContent(contentByIndex, data);
+        const assistantContent = convertToAssistantContent(allContent);
+
+        if (data.type === "artifact_update_chunk" && data.artifact) {
+          yield {
+            content: assistantContent,
+            artifact: data.artifact,
+          };
+        } else {
+          yield { content: assistantContent };
+        }
+      } catch (e) {
+        console.error("Error processing final chunk:", e);
       }
     }
   },
 });
 
 export function LocalRuntimeProvider({ children }: LocalRuntimeProviderProps) {
-  const runtime = useLocalRuntime(createModelAdapter());
+  const runtime = useLocalRuntime(createPromptQLAdapter());
 
   return (
     <AssistantRuntimeProvider runtime={runtime}>

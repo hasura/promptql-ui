@@ -69,58 +69,23 @@ export async function POST(req: Request) {
             const { done, value } = await reader.read();
             if (done) {
               console.log("Stream completed");
-              controller.enqueue({ type: "completion" });
+              controller.close();
               break;
             }
 
-            const text = new TextDecoder().decode(value);
-            const lines = text.split("\n");
-
-            for (const line of lines) {
-              if (line.startsWith("data: ")) {
-                try {
-                  const jsonStr = line.slice(6);
-                  const originalChunk = JSON.parse(jsonStr);
-
-                  // Transform into expected format
-                  const formattedChunk = {
-                    type: "assistant_message_response",
-                    assistant_action_id:
-                      originalChunk.assistant_action_id || "",
-                    message_chunk: originalChunk.message || "",
-                    plan: originalChunk.plan || "",
-                    code: originalChunk.code || "",
-                    code_output: originalChunk.code_output || "",
-                    code_error: originalChunk.code_error || "",
-                    index: originalChunk.index || 0,
-                  };
-
-                  controller.enqueue(formattedChunk);
-                } catch (e) {
-                  console.error("Error parsing chunk:", e);
-                }
-              }
-            }
+            // Directly relay the chunks without transformation
+            controller.enqueue(value);
           }
         } finally {
           reader.releaseLock();
-          controller.close();
         }
       },
     });
 
-    // Use TransformStream to convert objects to JSON strings
-    const jsonStream = stream.pipeThrough(
-      new TransformStream({
-        transform(chunk, controller) {
-          controller.enqueue(JSON.stringify(chunk) + "\n");
-        },
-      })
-    );
-
-    return new Response(jsonStream, {
+    // Return the stream directly without transformation
+    return new Response(stream, {
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "text/event-stream",
         "Cache-Control": "no-cache",
         Connection: "keep-alive",
       },

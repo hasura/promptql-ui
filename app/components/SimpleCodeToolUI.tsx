@@ -1,10 +1,10 @@
 import { makeAssistantToolUI } from "@assistant-ui/react";
 import { CodeIcon, PlayIcon, CheckIcon } from "lucide-react";
-
+import clsx from "clsx";
 interface CodeDisplayArgs {
   code: string;
-  output?: string;
-  error?: string;
+  codeOutput?: string;
+  codeError?: string;
 }
 
 type ExecutionState = "implementing" | "executing" | "executed";
@@ -20,9 +20,9 @@ const SimpleCodeDisplay = ({
 
   // Determine execution state based on args
   let state: ExecutionState = "implementing";
-  if (args.output || args.error) {
+  if (args.codeOutput || args.codeError) {
     state = "executed";
-  } else if (args.code && !args.output) {
+  } else if (args.code && !args.codeOutput) {
     state = "executing";
   }
 
@@ -39,7 +39,12 @@ const SimpleCodeDisplay = ({
   };
 
   return (
-    <div className="mb-4 flex items-center gap-2 rounded-lg border px-4 py-3">
+    <div
+      className={clsx(
+        "mb-4 flex items-center gap-2 rounded-lg border px-4 py-3",
+        state === "executing" && "animate-pulse"
+      )}
+    >
       {icons[state]}
       <span className="text-sm">{labels[state]}</span>
     </div>
