@@ -13,7 +13,6 @@ interface Message {
 export async function POST(req: Request) {
   try {
     const { messages } = await req.json();
-    console.log("Received messages:", messages);
 
     const interactions = messages.map((msg: Message) => ({
       user_message: {
