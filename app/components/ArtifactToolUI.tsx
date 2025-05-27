@@ -95,7 +95,7 @@ const ArtifactDisplay = ({
         <div className="rounded-md border">
           <div className="overflow-x-auto min-h-[60vh] max-h-[70vh]">
             <table className="min-w-full divide-y divide-gray-200">
-              <thead className="">
+              <thead className="bg-[#27251f]">
                 {table
                   .getHeaderGroups()
                   .map((headerGroup: HeaderGroup<Record<string, unknown>>) => (
@@ -103,7 +103,7 @@ const ArtifactDisplay = ({
                       {headerGroup.headers.map((header) => (
                         <th
                           key={header.id}
-                          className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider cursor-pointer"
+                          className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider cursor-pointer hover:bg-[#373530]"
                           onClick={header.column.getToggleSortingHandler()}
                         >
                           {flexRender(
