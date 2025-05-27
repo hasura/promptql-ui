@@ -52,6 +52,14 @@ export function accumulatePromptQLContent(
     .map(([, content]) => content);
 }
 
+function cleanWarningText(text: string): string {
+  // Remove artifact tags with warning disclaimers
+  return text.replace(
+    /<artifact identifier='[^']*' warning='I cannot see the full data so I must not make up observations' \/>/g,
+    ''
+  );
+}
+
 export function convertToAssistantContent(
   promptQLContent: PromptQLContent[]
 ): ThreadAssistantContentPart[] {
@@ -62,7 +70,7 @@ export function convertToAssistantContent(
         ? [
             {
               type: "text" as const,
-              text: content.text,
+              text: cleanWarningText(content.text),
             },
           ]
         : []),
