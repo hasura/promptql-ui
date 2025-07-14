@@ -7,6 +7,7 @@ dotenv.config();
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
+const PROMPTQL_API_URL = process.env.PROMPTQL_API_URL!;
 const PROMPTQL_API_KEY = process.env.PROMPTQL_API_KEY!;
 const DDN_URL = process.env.DDN_URL!;
 
@@ -25,7 +26,7 @@ async function captureResponse() {
     assistant_actions: [],
   }));
 
-  const response = await fetch("https://api.promptql.pro.hasura.io/query", {
+  const response = await fetch(PROMPTQL_API_URL, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

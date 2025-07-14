@@ -61,7 +61,7 @@ DATA='{
 # Send the curl request with appropriate handling for streaming
 if [ "$STREAM" = "true" ]; then
   # For streaming, process the response line by line
-  curl -N "https://api.promptql.pro.hasura.io/query" \
+  curl -N "$PROMPTQL_API_URL" \
     -H "Content-Type: application/json" \
     -H "x-hasura-ddn-token: $DDN_TOKEN" \
     -d "$DATA" | while read -r line; do
@@ -69,7 +69,7 @@ if [ "$STREAM" = "true" ]; then
     done
 else
   # Non-streaming request (original behavior)
-  curl -v "https://api.promptql.pro.hasura.io/query" \
+  curl -v "$PROMPTQL_API_URL" \
     -H "Content-Type: application/json" \
     -H "x-hasura-ddn-token: $DDN_TOKEN" \
     -d "$DATA"

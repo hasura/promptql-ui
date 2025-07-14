@@ -90,12 +90,19 @@ npm install
 2. Create a `.env` file in the root directory with the following variables:
 
 ```env
+PROMPTQL_API_URL=your_natural_language_api_url_here
 PROMPTQL_API_KEY=your_api_key_here
 DDN_URL=your_ddn_url_here
 DDN_TOKEN=your_ddn_token_here
 ```
 
 ### Environment Variables
+
+#### PROMPTQL_API_URL
+
+Go to PromptQL Settings and copy the Natural Language Endpoint
+
+Example: `https://api.promptql.pro.hasura.io/query`.
 
 #### PROMPTQL_API_KEY
 
