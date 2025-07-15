@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 
 export const maxDuration = 30;
 
+const PROMPTQL_API_URL = process.env.PROMPTQL_API_URL!;
 const PROMPTQL_API_KEY = process.env.PROMPTQL_API_KEY!;
 const DDN_URL = process.env.DDN_URL!;
 
@@ -21,7 +22,7 @@ export async function POST(req: Request) {
       assistant_actions: [],
     }));
 
-    const response = await fetch("https://api.promptql.pro.hasura.io/query", {
+    const response = await fetch(PROMPTQL_API_URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
