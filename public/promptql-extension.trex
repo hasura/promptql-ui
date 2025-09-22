@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest manifest-version="0.1" xmlns="http://www.tableau.com/xml/extension_manifest">
+  <dashboard-extension id="com.hasura.promptql" extension-version="0.1.0">
+    <default-locale>en_US</default-locale>
+    <name resource-id="name"/>
+    <description>PromptQL AI Assistant for Tableau Dashboards</description>
+    <author name="Hasura" email="support@hasura.io" organization="Hasura" website="https://hasura.io"/>
+    <min-api-version>1.0</min-api-version>
+    <source-location>
+      <url>https://6aeea9a7e562.ngrok-free.app</url>
+    </source-location>
+    <icon>promptql.svg</icon>
+    <permissions>
+      <permission>full data</permission>
+    </permissions>
+    <context-menu>
+      <configure-context-menu-item />
+    </context-menu>
+  </dashboard-extension>
+  <resources>
+    <resource id="name">
+      <text locale="en_US">PromptQL AI Assistant</text>
+    </resource>
+  </resources>
+</manifest>

@@ -13,7 +13,27 @@ interface Message {
 
 export async function POST(req: Request) {
   try {
-    const { messages } = await req.json();
+    const { messages, artifacts = [] } = await req.json();
+    
+    console.log('📨 API: Received chat request with artifacts:', {
+      messageCount: messages.length,
+      artifactCount: artifacts.length,
+      artifactTypes: artifacts.map((a: { identifier: string; title: string; artifact_type: string; data?: unknown[] }) => ({
+        identifier: a.identifier,
+        title: a.title,
+        type: a.artifact_type,
+        dataRows: a.data?.length || 0
+      }))
+    });
+
+    // Check environment variables
+    console.log('🔧 Environment check:', {
+      hasPromptQLApiUrl: !!PROMPTQL_API_URL,
+      hasPromptQLApiKey: !!PROMPTQL_API_KEY,
+      hasDDNUrl: !!DDN_URL,
+      hasDDNToken: !!process.env.DDN_TOKEN,
+      promptqlApiUrl: PROMPTQL_API_URL?.substring(0, 50) + '...',
+    });
 
     const interactions = messages.map((msg: Message) => ({
       user_message: {
@@ -40,7 +60,7 @@ export async function POST(req: Request) {
             "x-hasura-ddn-token": process.env.DDN_TOKEN!,
           },
         },
-        artifacts: [],
+        artifacts,
         system_instructions: "",
         timezone: "America/Los_Angeles",
         interactions,
@@ -48,9 +68,15 @@ export async function POST(req: Request) {
       }),
     });
 
+    console.log('📡 PromptQL API response status:', response.status);
+
     if (!response.ok) {
       const errorData = await response.json().catch(() => null);
-      console.log(JSON.stringify(errorData));
+      console.error('❌ PromptQL API error response:', {
+        status: response.status,
+        statusText: response.statusText,
+        errorData: errorData
+      });
       throw new Error(
         `PromptQL API request failed with status ${response.status}: ${
           errorData ? JSON.stringify(errorData) : response.statusText
